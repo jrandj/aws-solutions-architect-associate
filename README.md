@@ -1,9 +1,9 @@
 # Exam SAA-C02
 
-- [Domain 1: Design Resilient Architectures](#Domain-1:-Design-Resilient-Architectures)
-- [Domain 2: Design High-Performing Architectures](#Domain-2:-Design-High-Performing-Architectures)
-- [Domain 3: Design Secure Applications and Architectures](#Domain-3:-Design-Secure-Applications-and-Architectures)
-- [Domain 4: Design Cost-Optimized Architectures](#Domain-4:-Design-Cost-Optimized-Architectures)
+- [Domain 1: Design Resilient Architectures](#Domain-1\:-Design-Resilient-Architectures)
+- [Domain 2: Design High-Performing Architectures](#Domain-2\:-Design-High-Performing-Architectures)
+- [Domain 3: Design Secure Applications and Architectures](#Domain-3\:-Design-Secure-Applications-and-Architectures)
+- [Domain 4: Design Cost-Optimized Architectures](#Domain-4\:-Design-Cost-Optimized-Architectures)
 - [Appendix](#Appendix)
 
 ## Domain 1: Design Resilient Architectures
@@ -18,7 +18,7 @@
 
 1. Select an appropriate compute and storage service based on requirements.
 
-### Design a multi-tier architecture solution
+### Design highly available and/or fault-tolerant architectures
 
 1. Determine the amount of resources needed to provide a fault-tolerant architecture across Availability Zones.
 
@@ -168,7 +168,7 @@
 
 1. Storage
 
-### AWS Services
+### AWS Services and features
 
 #### Analytics
 
