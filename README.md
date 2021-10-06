@@ -94,6 +94,10 @@
 
 1. Select appropriate techniques to secure a root account.
 
+    * AWS organizations is an account management service that enables you to consolidate multiple AWS accounts into an organization that you create and centrally manage.
+
+    * Always enable multi-factor authentication on the root account. Always use a strong and complex password on the root account. The paying account should be used for billing purposes only. Do not deploy resources into the paying account. Enable/Disable AWS services using Service Control Policies (SCP) either on the OU or on individual accounts.
+
 1. Determine ways to secure credentials using features of AWS IAM.
 
 1. Determine the secure method for an application to access AWS APIs.
@@ -182,6 +186,12 @@
 #### Analytics
 
 1. Amazon Athena
+
+    * Amazon Athena is an interactive query service which enables you to analyse and query data located in S3 using standard SQL.
+
+    * Athena is serverless and you pay per query. There is no need to setup complex Extract/Transform/Load (ETL) processes, and it works directly with data stored in S3.
+
+    * Athena can be used to query log files stored in S3. It can also be used to generate business reports on data stored in S3.
 
 1. Amazon Elasticsearch Service (Amazon ES)
 
@@ -275,11 +285,28 @@
 
 1. AWS DataSync
 
+    * AWS DataSync automatically encrypts data and accelerates transfer over the WAN. Datasync performs automatic data integrity checks in-transit and at-rest.
+
+    * It is used to move large amounts of data from on-premises to AWS. It is used with NFS and SMB compatible file systems. The replication can be done hourly, daily, or weekly. The DataSync agent is required to start the replication. It can be used to replicate EFS to EFS.
+
 1. AWS Migration Hub
 
 1. AWS Server Migration Service (AWS SMS)
 
 1. AWS Snowball
+
+    * Snowball is a petabyte-scale data transport solution that uses secure appliances to transfer large amounts of data into and out of AWS. Using Snowball addresses common challenges with large-scale data transfers including high network costs, long transfer times, and security concerns. Transferring data with Snowball is simple, fast, secure, and can be as little as one-fifth the cost of high-speed internet.
+
+    * Snowball comes in either a 50 TB or 80 TB size. Security controls include 256-bit encryption, and an industry-standard Trusted Platform Module (TPM) designed to ensure both security and full chain-of-custody of your data. Once the data job has been processed and verified, AWS performs a software erasure of the Snowball appliance.
+
+    * AWS Snowball Edge is a 100 TB data transfer device with on-board storage and compute capabilities. You can use it to move large amounts of data into and out of AWS, as a temporary storage tier for large local datasets, or to support local workloads in remote or offline locations. Snowball Edge can cluster together to form a local storage tier and process your data on-premises, helping ensure your applications continue to run even when they are not able to access the cloud.
+
+    * AWS Snowmobile is an Exabyte-scale data transfer service used to move extremely large amounts of data to AWS. You can transfer up to 100 PB per Snowmobile, a 45-foot long ruggedised shipping container, pulled by a semi-trailer truck. Snowmobile makes it easy to move massive volumes of data to the cloud, including video libraries, image repositories, or even a complete data centre migration.
+
+    * A summary of when to consider Snowball is shown below:
+        <p align="center">
+        <img src="/res/snowball_use_case.jpg">
+        </p>
 
 1. AWS Transfer Family
 
@@ -289,9 +316,19 @@
 
 1. Amazon CloudFront
 
-    * CloudFront is a content delivery service that works in conjunction with other services to provide developers with a simple way to distribute content to end users.
+    * CloudFront is a Content Delivery Network (CDN) that works in conjunction with other services to provide developers with a simple way to distribute content to end users.
 
     * This service is useful for companies with a need for higher response times and large file content that want to distribute these files to a sizeable number of users. Once content is put in an origin server, like an Amazon Simple Storage Service bucket or an Elastic Compute Cloud instance, it’s pushed out to multiple CloudFront servers as content is requested.
+
+    * An **Edge Location** is the location where content will be cached. This is separate to an AWS Region or AZ. Edge locations are not just read only, they can be written to as well. Objects are cached for the life of the Time to Live (TTL). Cached objects can be cleared but you will be charged.
+
+    * The **Origin** is the origin of all the files that the CDN will distribute. This can be an S3 Bucket, an EC2 Instance, an Elastic Load Balancer, or Route 53.
+
+    * The **Distribution** is the name given to the CDN which consists of a collection of Edge Locations.
+
+    * A **Web Distribution** is typically for websites and a **RTMP** is used for media streaming.
+
+    * Use signed URLs or cookies when you want to secure content so that only the people you authorise are able to access it. A signed URL is for individual files with 1 file corresponding to 1 URL. A signed cookie is for multiple files with 1 cookie corresponding to multiple files. If your origin is EC2, then use CloudFront. If your origin is S3, then use an S3 signed URL.
 
 1. AWS Direct Connect
 
@@ -317,9 +354,15 @@
 
     * IAM allows you to manage users and their level of access to the AWS Console.
 
+    * IAM is universal. It does not apply to regions. New users have NO permissions when first created. New users are assigned an Access Key ID & Secret Access Key when first created. These are not the same as a password and you cannot use them to login to the console. You can use these to access AWS is the APIs. You only get to view them once.
+
+    * Multifactor authentication should always be setup on your root account. A password rotation policy can be also be created.
+
 1. AWS Key Management Service (AWS KMS)
 
 1. Amazon Macie
+
+    * Amazon Macie is a security service which uses Machine Learning (ML) and Natural Language Processing (NLP) to discover, classify and protect sensitive data stored in S3. It can also be used to analyse CloudTrail logs for suspicious API activity. It provides dashboards, reports, and alerting. It is great for PCI-DSS compliance and preventing ID theft.
 
 1. AWS Secrets Manager
 
@@ -352,6 +395,8 @@
     * S3 is good at storing long-term data due to its archiving system. Things like reports and records, which may go unused for years, can be stored on S3 at a lower cost than the other two storage services discussed.
 
     * Files can be from 0 Bytes to 5 TB. Files are stored in Buckets which are basically folders. S3 is a universal namespace. That is, names must be unique globally. This is because a bucket can be accessed at a web address. When uploading a file to an S3 Bucket, a HTTP 200 response is received upon successful completion of the upload.
+
+    * The format of the AWS URL is `https://<region>.amazonaws.com/<bucket>`.
 
     * Components of the S3 object include:
         * **Key:** The name of the object.
@@ -407,9 +452,35 @@
 
     * Object locks come in governance mode and compliance mode. With governance mode, users can't overwrite or delete an object version or alter its lock settings unless they have special permissions. With compliance mode, a protected object version can't be overwritten or deleted by any user, including the root user in your AWS account.
 
+    * Prefixes are the component of the pathname between the bucket name and the file name. More prefixes result in better performance. You can get 3,500 PUT/COPY/POST/DELETE and 5,500 GET/HEAD requests per second per prefix. This means that if you spread your reads across different prefixes you can allow more requests per second.
+
+    * Multipart uploads can increase performance when uploading files to S3. This is recommended for files over 100 MB and must be used for any file over 5 GB. S3 byte-range fetches can also increase performance when downloading files from S3.
+
+    * If you are using SSE-KMS to encrypt your objects in S3, keep in mind the KMS limits. Uploading or downloading will count towards the KMS quota. This is region-specific but is either 5,500, 10,000, or 30,000 requests per second. Currently you cannot request a quota increase for KMS.
+
+    * S3 Select is used to retrieve only a subset of data from an object using simple SQL expressions. This allows you to save money on data transfer and increase speed.
+
+    * S3 buckets can be shared across accounts using Bucket Policies and IAM (applies across the entire bucket) or using Bucket ACLs and IAM (individual objects) for programmatic access. To share with console access as well then you can create cross-account IAM roles.
+    
+    * When using cross region replication, the following should be considered:
+        * Versioning must be enabled on both the source and destination buckets.
+        * Files in an existing bucket are not replicated automatically.
+        * All subsequent updated files will be replicated automatically.
+        * Delete markers are not replicated.
+        * Deleting individual versions or delete markers will not be replicated
+    
 1. Amazon S3 Glacier
 
     * S3 Glacier is a secure, durable, and low-cost storage class for data archiving. Retrieval times configurable from minutes to hours.
     * S3 Glacier Deep Archive is the lowest-cost storage class where a retrieval time of 12 hours is acceptable.
 
 1. AWS Storage Gateway
+
+    * AWS Storage Gateway is a service that connects an on-premises software appliance with cloud-based storage to provide seamless and secure integration between an organisations on-premises IT environment and AWS's storage infrastructure. The service enables you to securely store data to the AWS cloud for scalable and cost-effective storage.
+
+    * AWS Storage Gateway is available for download as a virtual machine (VM) image that you install on a host in your datacentre. Storage Gateway supports either VMware ESXi or Microsoft Hyper-V. Once you've installed your gateway and associated it with your AWS account through the activation process, you can use the AWS Management Console to create the storage gateway option that is right for you.
+
+    * Types of Storage Gateway include:
+        * **File Gateway (NFS & SMB):** Files are stored in your S3 buckets, and accessed through a Network File System (NFS) mount point. Ownership, permissions, and timestamps are stored in S3 in the user-metadata of the object associated with the file. Once transferred to S3 they can be managed as native S3 objects.
+        * Volume Gateway (iSCSI): Presents your applications with disk volumes using the iSCSI block protocol. Data written to these volumes can be asynchronously backed up point-in-time snapshots of your volumes and stored in the cloud as Amazon EBS snapshots. Snapshots are incremental backups that only capture changed blocks. All snapshot storage is compressed to minimise your storage charges. Stored volumes are where the entire dataset is stored on site and is asynchronously backed up to S3. Cached volumes are where the entire dataset is stored on S3 and the most frequently accessed data is cached on site.
+        * Tape Gateway (VTL): The VTL interface provided lets you leverage your existing tape-based backup application infrastructure to store data on virtual tape cartridges that you create on your tape gateway. Each tape gateway is preconfigured with a media changer and tape drives, which are available to your existing client backup applications as iSCSI devices.
