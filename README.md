@@ -219,7 +219,49 @@
 
 1. Amazon EC2
 
-    * Elastic Compute Cloud (EC2) is a web service that provides resizable compute capacity in the cloud. It is designed to make web-scale computing easier for developers.
+    * Elastic Compute Cloud (EC2) is a web service that provides resizable compute capacity in the cloud. It is designed to make web-scale computing easier for developers. It reduces the time required to obtain and boot new server instances to minutes.
+
+    * The following pricing types are available with EC2:
+        * **On Demand:** Allows you to pay a fixed rate by the hour (or by the second) with no commitment.
+        * **Reserved:** Provides you with a capacity reservation, and offers a significant discount on the hourly charge for an instance. Contract terms are 1 year or 3 year terms.
+        * **Spot:** Enables you to bid whatever price you want for instance capacity, providing for even greater savings if your applications have flexible start and end times. If your instance is terminated by Amazon, you will not be charged for a partial hour of usage. However, if you terminate the instance yourself, you will be changed for any hour in which the instance ran.
+        * **Dedicated Hosts:** Physical EC2 server dedicated for your use. Helps reduce your costs by allowing you to use your existing server-bound software licenses.
+
+    * Spot instances save up to 90% of the cost of on-demand instances. They are useful for any type of computing where you don't need persistent storage. A spot fleet is a collection of spot instances and, optionally, on-demand instances. You can block spot instances from terminating by using spot block.
+
+    * Termination protection is turned off by default, it must be turned on. On an EBS-backed instance, the default action is for the root EBS volume to be deleted when the instance is terminated. However, other volumes will not be deleted by default. EBS root volumes and additional volumes can be encrypted. You can also use a third party tool (such as bitlocker) to encrypt the root volume, or this can be done when creating AMI's.
+
+    * Regarding Security Groups:
+        * All inbound traffic is blocked by default.
+        * All outbound traffic is allowed.
+        * Changes to Security Groups take effect immediately
+        * You can have any number of EC2 instances within a security group.
+        * You can have multiple security groups attached to EC2 instances.
+        * Security Groups are stateful.
+        * If you create an inbound rule allowing traffic in, that traffic is automatically allowed back out again.
+        * You cannot block specific IP addresses using Security Groups, instead use Network Access Control Lists.
+        * You can specify allow rules, but not deny rules.
+
+    * Regarding network devices available in EC2:
+        * **Elastic Network Interface (ENI):** A virtual network card. Used for basic networking. If you need a separate networks for production and logging, you can use multiple ENIs for each network.
+        * **Enhanced Networking (EN):** Uses single root I/O virtualisation (SR-IOV) to provide high-performance networking capabilities on supported instance types. Used for when you need speeds between 10 Gbps and 100 Gbps. This is for reliable, high throughput.
+        * **Elastic Fabric Adapter:** A network device that you can attach to your Amazon EC2 instance to accelerate High Performance Computing (HPC) and machine learning applications. Used for when you need to accelerate High Performance Computing (HPC) and machine learning applications, or you need to do an OS bypass.
+
+    * Regarding EC2 Hibernate:
+        * Hibernate preserves in-memory RAM on persistent storage (EBS). It is faster to boot because you do not need to reload the operating system.
+        * Instance RAM must be less than 150 GB.
+        * Instance families include C3, C4, C5, M3, M4, M5, R3, R4 and R5.
+        * Hibernate is available for Windows, Amazon Linux 2 AMI, and Ubuntu.
+        * Hibernate is available for on-demand instances and reserved instances.
+        * Instances can't be hibernated for more than 60 days.
+
+    * Roles are far more secure than storing your access key and secret access key on individual EC2 instances (in the .aws directory). Roles are easier to manage. Roles can be assigned to an EC2 instance after it is created using both the console and command line. Roles are universal, you can use them in any region.
+
+	* Metadata can be queried to get information about an instance:
+		```shell
+		curl http://<ip>/latest/meta-data/
+		curl http://<ip>/latest/user-data/
+		```
 
 1. AWS Elastic Beanstalk
 
@@ -265,7 +307,15 @@
 
     * CloudWatch monitors your AWS resources and the applications you run on AWS in real time. You can use CloudWatch to collect and track metrics, which are variables you can measure for your resources and applications.
 
-    * The CloudWatch home page automatically displays metrics about every AWS service you use. You can additionally create custom dashboards to display metrics about your custom applications and display custom collections of metrics that you choose.
+    * The CloudWatch home page automatically displays metrics about every AWS service you use. You can additionally create custom dashboards to display metrics about your custom applications and display custom collections of metrics that you choose. Alarms can also be created to notify you when thresholds are hit.
+
+    * CloudWatch with EC2 will monitor events every 5 minutes by default. you can have 1-minute intervals by turning on detailed monitoring.
+
+    * CloudWatch Events help you to respond to state changes in your AWS resources.
+    
+    * CloudWatch Logs help you to aggregate, monitor, and store logs.
+
+    * CloudWatch monitors performance. CloudTrail monitors API calls in the AWS platform.
 
 1. AWS Config
 
@@ -376,9 +426,36 @@
 
 1. Amazon Elastic Block Store (Amazon EBS)
 
-    * EBS provides storage for your virtual machine drives. It stores data in equally sized blocks and organizes them into a hierarchy like a traditional file system. The volumes are provisioned in size and attached to EC2 instances in a way that’s like the local disk drive on a physical machine.
+    * EBS provides persistent block storage volumes for your virtual machine drives. It stores data in equally sized blocks and organizes them into a hierarchy like a traditional file system. Each EBS volume is automatically replicated within its AZ to protect from component failure. The volumes are provisioned in size and attached to EC2 instances in a way that’s like the local disk drive on a physical machine.
 
-    * EBS must be paired with an EC2 instance. When you need a high-performance storage service for a single instance, use EBS.
+    * EBS must be paired with an EC2 instance and will always be in the same availability zone as the EC2 instance. You can change EBS volume sizes on the fly, including changing the size and storage type. When you need a high-performance storage service for a single instance, use EBS.
+
+    * A summary of the EBS types is shown below:
+        <p align="center">
+        <img src="/res/EBS_overview.jpg">
+        </p>
+
+    * Regarding Snapshots:
+        * Snapshots are point in time copies of volumes.
+        * Snapshots are incremental, only the blocks that have changed since your last snapshot are moved to S3.
+        * To create a snapshot for EBS volumes that serve as root devices, you should stop the instance before taking the snapshot. A snapshot can be taken while the instance is running.
+        * You can create Amazon Machine Images (AMI's) from Snapshots.
+        * To move an EC2 volume from one AZ to another, take a snapshot of it, create an AMI from the snapshot and then use the AMI to launch the EC2 instance in a new AZ.
+        * To move an EC2 volume from one region to another, take a snapshot of it, create an AMI from the snapshot and then copy the AMI from one region to the other. Then use the copied AMI to launch the new EC2 instance in the new region.
+        * Snapshots of encrypted volumes are encrypted automatically.
+        * Volumes restored from encrypted snapshots are encrypted automatically.
+        * Only unencrypted snapshots can be shared. They can be shared with other AWS accounts or made public.
+        * You can now encrypt root device volumes upon creation of the EC2 instance.
+
+    * AMI's are categorised as:
+        * **EBS Volumes:** The root device for an instance launch from the AMI is an Amazon EBS volume created from an Amazon EBS snapshot.
+        * **Instance Store Volumes:** The root device for an instance launched from the AMI is an instance store volume created from a template stored in Amazon S3.'
+
+    * Instance Store Volumes are sometimes called ephemeral storage. This is because they cannot be stopped, and if the underlying host fails, you will lose your data.
+
+    * EBS backed instances can be stopped. You will not lose the data on this instance if it is stopped. Both EBS Volumes and Instance Store Volumes can be rebooted without data loss.
+
+    * By default, both root volumes will be deleted on termination. However, with EBS volumes, you can tell AWS to keep the root device volume.
 
 1. Amazon Elastic File System (Amazon EFS)
 
@@ -426,7 +503,7 @@
         * **S3 One Zone - IA:** Like IA but you do not require multiple Availability Zone data resilience.
         * **S3 - Intelligent Tiering:** Designed to optimise costs by automatically moving data to the most cost-effective access tier, without performance impact or operational overhead.
 
-    * A summary of the AWS storage options is shown below:
+    * A summary of the AWS storage tiers is shown below:
         <p align="center">
         <img src="/res/storage_overview.jpg">
         </p>
@@ -482,5 +559,5 @@
 
     * Types of Storage Gateway include:
         * **File Gateway (NFS & SMB):** Files are stored in your S3 buckets, and accessed through a Network File System (NFS) mount point. Ownership, permissions, and timestamps are stored in S3 in the user-metadata of the object associated with the file. Once transferred to S3 they can be managed as native S3 objects.
-        * Volume Gateway (iSCSI): Presents your applications with disk volumes using the iSCSI block protocol. Data written to these volumes can be asynchronously backed up point-in-time snapshots of your volumes and stored in the cloud as Amazon EBS snapshots. Snapshots are incremental backups that only capture changed blocks. All snapshot storage is compressed to minimise your storage charges. Stored volumes are where the entire dataset is stored on site and is asynchronously backed up to S3. Cached volumes are where the entire dataset is stored on S3 and the most frequently accessed data is cached on site.
-        * Tape Gateway (VTL): The VTL interface provided lets you leverage your existing tape-based backup application infrastructure to store data on virtual tape cartridges that you create on your tape gateway. Each tape gateway is preconfigured with a media changer and tape drives, which are available to your existing client backup applications as iSCSI devices.
+        * **Volume Gateway (iSCSI):** Presents your applications with disk volumes using the iSCSI block protocol. Data written to these volumes can be asynchronously backed up point-in-time snapshots of your volumes and stored in the cloud as Amazon EBS snapshots. Snapshots are incremental backups that only capture changed blocks. All snapshot storage is compressed to minimise your storage charges. Stored volumes are where the entire dataset is stored on site and is asynchronously backed up to S3. Cached volumes are where the entire dataset is stored on S3 and the most frequently accessed data is cached on site.
+        * **Tape Gateway (VTL):** The VTL interface provided lets you leverage your existing tape-based backup application infrastructure to store data on virtual tape cartridges that you create on your tape gateway. Each tape gateway is preconfigured with a media changer and tape drives, which are available to your existing client backup applications as iSCSI devices.
