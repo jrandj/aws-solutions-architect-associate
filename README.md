@@ -257,11 +257,18 @@
 
     * Roles are far more secure than storing your access key and secret access key on individual EC2 instances (in the .aws directory). Roles are easier to manage. Roles can be assigned to an EC2 instance after it is created using both the console and command line. Roles are universal, you can use them in any region.
 
-	* Metadata can be queried to get information about an instance:
-		```shell
-		curl http://<ip>/latest/meta-data/
-		curl http://<ip>/latest/user-data/
-		```
+    * Metadata can be queried to get information about an instance:
+        ```shell
+        curl http://<ip>/latest/meta-data/
+        curl http://<ip>/latest/user-data/
+        ```
+
+    * EC2 instances can be grouped in different placement groups:
+        * Clustered Placement Group: For low latency and high network throughput, instances are colocated in the same AZ.
+        * Spread Placement Group: For critical EC2 instances where you want each instance on separate pieces of hardware. Can span multiple AZs.
+        * Partitioned Placement Group: As for Spread Placement Group but you can have multiple instances for each piece of hardware. Can span multiple AZs.
+
+    * A placement group name must be unique within your AWS account. Only certain types of instances can be launched in a placement group. AWS recommends homogenous instances within clustered placement groups. Placement groups cannot be merged, but instances can be moved into a placement group if it is in a stopped state. The move can currently only be done with the AWS CLI or an AWS SDK, the console does not support it.
 
 1. AWS Elastic Beanstalk
 
@@ -329,7 +336,7 @@
 
 1. AWS Trusted Advisor
 
-#### Migration and Transer
+#### Migration and Transfer
 
 1. AWS Database Migration Service (AWS DMS)
 
@@ -422,6 +429,19 @@
 
 1. AWS WAF
 
+    * Amazon WAF is a web application firewall that lets you monitor the HTTP and HTTPS requests that are forwarded to Amazon CloudFront, an Application Load Balancer, or API Gateway. AWS WAF also lets you control access to your content.
+
+    * Conditions that can be configured include:
+        * The IP addresses that requests originate from.
+        * The country that requests originate from.
+        * The values in request headers.
+        * The strings that appear in requests.
+        * The length of requests.
+        * The presence of SQL code that is likely to be malicious.
+        * The presence of a script that is likely to be malicious.
+
+    * Based on these conditions the application load balancer, CloudFront, or API Gateway will allow content to be received or to give HTTP 403 response.
+
 #### Storage
 
 1. Amazon Elastic Block Store (Amazon EBS)
@@ -463,7 +483,15 @@
 
     * EFS may be used whenever you need a shared file storage option for multiple EC2 instances with automatic, high-performance scaling.
 
+    * EFS supports the NFSv4 protocol. You only pay for the storage you use with storage scaling up to petabytes. EFS can support thousands of NFS connections. Data is stored across multiple AZs within a region and EFS provides read after write consistency.
+
 1. Amazon FSx
+
+    * Amazon FSx for Windows File Server provides a fully managed native Microsoft file system so you can easily move your Windows-based applications that require file storage to AWS. Amazon FSx is built on Windows Server.
+
+    * Amazon FSx runs Windows Server Manage Block (SMB)-based file services. It also supports AD users, access control lists, groups, and security policies, along with Distributed File System (DFS) namespaces and replication.
+
+    * Amazon FSx for Lustre is a fully managed file system that is optimised for compute-intensive workloads, such as high-performance computing, machine learning, media data processing workflows, and Electronic Design Automation (EDA).
 
 1. Amazon S3
 
