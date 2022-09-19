@@ -397,7 +397,7 @@ PostgreSQL).
 
     * S3 pricing for US East (N. Virginia) is shown below:
         <p align="center">
-        <img src="/res/storage_pricing.jpg">
+        <img src="/res/storage_pricing.JPG">
         </p>
 
 ### Task Statement 2: Design cost-optimized compute solutions.
@@ -426,7 +426,7 @@ PostgreSQL).
 
     * A summary of when to consider Snowball is shown below:
         <p align="center">
-        <img src="/res/snowball_use_case.jpg">
+        <img src="/res/snowball_use_case.JPG">
         </p>
 
 1. Instance types, families, and sizes (for example, memory optimized, compute optimized, virtualization)
@@ -937,7 +937,7 @@ PostgreSQL).
 
     * A summary of the EBS types is shown below:
         <p align="center">
-        <img src="/res/EBS_overview.jpg">
+        <img src="/res/EBS_overview.JPG">
         </p>
 
     * Regarding Snapshots:
@@ -1018,7 +1018,7 @@ PostgreSQL).
 
     * A summary of the AWS storage tiers is shown below:
         <p align="center">
-        <img src="/res/storage_overview.jpg">
+        <img src="/res/storage_overview.JPG">
         </p>
 
     * You are charged for S3 in the following ways:
