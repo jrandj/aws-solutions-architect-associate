@@ -20,6 +20,10 @@
 
 1. AWS federated access and identity services (for example, AWS Identity and Access Management [IAM], AWS Single Sign-On [AWS SSO]).
 
+	* AWS IAM Identity Center makes it easy to centrally manage federated access to multiple AWS accounts and business applications and provide users with single sign-on access to all their assigned accounts and applications from one place.
+
+	* AWS IAM Identity Center works with an IdP of your choice, such as Okta Universal Directory or Azure Active Directory (AD) via the Security Assertion Markup Language 2.0 (SAML 2.0) protocol.
+
 1. AWS global infrastructure (for example, Availability Zones, AWS Regions).
 
 	* A Region is a location. An Availability Zone is a Data Center. An Availability Zone may contain several Data Centres that are close to each other (within 100 km).
@@ -27,6 +31,8 @@
 	* Edge locations are endpoints for AWS that are used for caching content. THere are many more edge locations than regions.
 
 1. AWS security best practices (for example, the principle of least privilege).
+
+	* Only assign a user the minimum amount of privileges they need to do their job.
 
 1. The AWS shared responsibility model.
 
@@ -37,6 +43,8 @@
 1. Applying AWS security best practices to IAM users and root users (for example, multi-factor authentication [MFA]).
 
 1. Designing a flexible authorization model that includes IAM users, groups, roles, and policies.
+
+	* Permissions are assigned using IAM policy documents (consisting of JSON). A user is a physical person, a group is a function such as administrator and contains users, and roles are used internally within AWS to allow acccess from one service to another. A permission should be assigned to a group and then users inherit the permissions of the groups they are assigned. An explicit deny will always overwrite an allow.
 
 1. Designing a role-based access control strategy (for example, AWS Security Token Service [AWS STS], role switching, cross-account access).
 
@@ -136,6 +144,12 @@
 
 1. When to use read replicas.
 
+	* RDS Read replicas are for scaling read performance and not for disaster recovery. Key facts include:
+		* A read replica can be cross-AZ and cross-region.
+		* Each read replica has its own DNS endpoint.
+		* Read replicas require automatic backup to be enabled.
+		* Read replicas can be promoted to be their own database. This breaks the replication.
+
 1. Workflow orchestration (for example, AWS Step Functions).
 
 #### Skills in:
@@ -161,7 +175,9 @@
 1. AWS global infrastructure (for example, Availability Zones, AWS Regions, Amazon Route 53).
 
     * A Region is a physical location in the world which consists of two or more Availability Zones (AZ's).
+
     * An AZ is one or more discrete data centres, each with redundant power, networking and connectivity, housed in separate facilities.
+
     * Edge Locations are endpoints for AWS which are used for caching content. Typically, this consists of CloudFront, Amazon's Content Delivery Network (CDN).
 
 1. AWS managed services with appropriate use cases (for example, Amazon Comprehend,
@@ -265,8 +281,13 @@ memory) to meet business requirements.
 
 1. Database connections and proxies.
 
-1. Database engines with appropriate use cases (for example, heterogeneous migrations,
-homogeneous migrations).
+1. Database engines with appropriate use cases (for example, heterogeneous migrations, homogeneous migrations).
+
+	* ACID stands for Atomic, Consistent, Isolated, and Durable:
+		* **Atomic:** All changes to data must be performed successfully or not at all.
+		* **Consistent:** Data must be in a consistent state before and after the transaction.
+		* **Isolated:** No other process can change the data while the transaction is running.
+		* **Durable:** The changes made by a transaction must persist. 
 
 1. Database replication (for example, read replicas).
 
@@ -502,6 +523,16 @@ PostgreSQL).
 
 1. Network routing, topology, and peering (for example, AWS Transit Gateway, VPC peering).
 
+	* VPC Peering allows you to connect 1 VPC with another via a direct network route using private IP addresses.
+
+	* Instances behave as if they were on the same private network.
+
+	* You can peer VPCs with other AWS accounts as well as with other VPCs in the same account.
+
+	* Peering is in a star configuration (i.e. 1 central VPC peer with 4 others). There is no transitive peering.
+
+	* You can peer between regions.
+
 1. Network services with appropriate use cases (for example, DNS).
 
 #### Skills in:
@@ -511,6 +542,8 @@ PostgreSQL).
 1. Configuring appropriate network connections (for example, Direct Connect compared with VPN compared with internet).
 
 1. Configuring appropriate network routes to minimize network transfer costs (for example, Region to Region, Availability Zone to Availability Zone, private to public, Global Accelerator, VPC endpoints).
+
+	* VPC Endpoints are used when you want to connect AWS services without leaving the Amazon internal network. Interface endpoints and gateway endpoints (S3 and DynamoDB).
 
 1. Determining strategic needs for content delivery networks (CDNs) and edge caching.
 
@@ -618,8 +651,8 @@ PostgreSQL).
 
     * The following pricing types are available with EC2:
         * **On Demand:** Allows you to pay a fixed rate by the hour (or by the second) with no commitment.
-        * **Reserved:** Provides you with a capacity reservation, and offers a significant discount on the hourly charge for an instance. Contract terms are 1 year or 3 year terms.
-        * **Spot:** Enables you to bid whatever price you want for instance capacity, providing for even greater savings if your applications have flexible start and end times. If your instance is terminated by Amazon, you will not be charged for a partial hour of usage. However, if you terminate the instance yourself, you will be changed for any hour in which the instance ran.
+        * **Reserved:** Provides you with a capacity reservation, and offers a significant discount on the hourly charge for an instance. Contract terms are 1 year or 3 year terms. Up to a 72% discount on the hourly charge.
+        * **Spot:** Enables you to bid whatever price you want for instance capacity, providing for even greater savings if your applications have flexible start and end times. If your instance is terminated by Amazon, you will not be charged for a partial hour of usage. However, if you terminate the instance yourself, you will be changed for any hour in which the instance ran. Up to a 90% discount.
         * **Dedicated Hosts:** Physical EC2 server dedicated for your use. Helps reduce your costs by allowing you to use your existing server-bound software licenses.
 
     * Spot instances save up to 90% of the cost of on-demand instances. They are useful for any type of computing where you don't need persistent storage. A spot fleet is a collection of spot instances and, optionally, on-demand instances. You can block spot instances from terminating by using spot block.
@@ -652,6 +685,8 @@ PostgreSQL).
 
     * Roles are far more secure than storing your access key and secret access key on individual EC2 instances (in the .aws directory). Roles are easier to manage. Roles can be assigned to an EC2 instance after it is created using both the console and command line. Roles are universal, you can use them in any region.
 
+	* A bootstrap script runs with administrator privileges on EC2 instance startup. It is configured in the "User data" section on instance creation.
+
     * Metadata can be queried to get information about an instance:
         ```shell
         curl http://<ip>/latest/meta-data/
@@ -659,9 +694,9 @@ PostgreSQL).
         ```
 
     * EC2 instances can be grouped in different placement groups:
-        * Clustered Placement Group: For low latency and high network throughput, instances are colocated in the same AZ.
-        * Spread Placement Group: For critical EC2 instances where you want each instance on separate pieces of hardware. Can span multiple AZs.
-        * Partitioned Placement Group: As for Spread Placement Group but you can have multiple instances for each piece of hardware. Can span multiple AZs.
+        * **Clustered Placement Group:** For low latency and high network throughput, instances are colocated in the same AZ.
+        * **Spread Placement Group:** For critical EC2 instances where you want each instance on separate pieces of hardware. Can span multiple AZs.
+        * **Partitioned Placement Group:** As for Spread Placement Group but you can have multiple instances for each piece of hardware. Can span multiple AZs.
 
     * A placement group name must be unique within your AWS account. Only certain types of instances can be launched in a placement group. AWS recommends homogenous instances within clustered placement groups. Placement groups cannot be merged, but instances can be moved into a placement group if it is in a stopped state. The move can currently only be done with the AWS CLI or an AWS SDK, the console does not support it.
 
@@ -695,13 +730,43 @@ PostgreSQL).
 
 1. Amazon Aurora.
 
+	* Aurora is Amazon's proprietary relational database which is MySQL and PostgreSQL-compatible. It has 5x better performance than MySQL and 3x better than PostgresSQL.
+
+	* 2 copies of your data are contained in each AZ, with a minimum of 3 AZs. 6 copies of your data.
+
+	* You can share Aurora snapshots with other AWS accounts.
+
+	* 3 types of replicas available: Aurora replicas, MySQL replicas, and PostgreSQL replicas. Automated failover is only available with Aurora replicas.
+
+	* Aurora has automated backups turned on by default. You can also take snapshots with Aurora. You can share these snapshots with other AWS accounts.
+
 1. Amazon Aurora Serverless.
+
+	* Amazon Aurora Serverless is a serverless database cluster that automatically starts up, shuts down, and scales capacity up or down based on your application's needs.
+
+	* Use Amazon Aurora Serverless if you want a simple, cost-effective option for infrequent, intermittent, or unpredictable workloads.
 
 1. Amazon DocumentDB (with MongoDB compatibility).
 
 1. Amazon DynamoDB.
 
 	* Amazon DynamoDB is a fast and flexible non-relational database service for any scale. DynamoDB enables customers to offload the administrative burdens of operating and scaling distributed databases to AWS so that they don’t have to worry about hardware provisioning, setup and configuration, throughput capacity planning, replication, software patching, or cluster scaling.
+
+	* Key facts about DynamoDB:
+		* Stored on SSD.
+		* Spread across 3 geographically distinct data centres.
+		* Eventually consistent reads (default).
+		* Strongly consistent reads.
+
+	* Eventually consistent will achieve consistency within a second. Strongly consistent will achieve consistency instantly.
+
+	* DynamoDB transactions provide developers ACIC properties across 1 or more tables within a single AWS account and region.
+
+	* Point-in-Time Recovery (PITR) can protect against accidental writes or deletes. You can restore to any point in the last 35 days and up to 5 minutes in the past. Not enabled by default.
+
+	* DynamoDB streams provide a time-ordered sequence of item-level changes in a table. Stored for 24 hours. The stream includes events such as inserts, updates, and deletes. Can be combined with Lambda function for functionality like stored procedures.
+
+	* Global Tables provides managed multi-master, multi-region replication. It is based on DynamoDB streams. Replication latency is under 1 second.
 
 1. Amazon ElastiCache.
 
@@ -713,7 +778,13 @@ PostgreSQL).
 
 1. Amazon RDS.
 
+	* RDS is for OLTP (Online Transaction Processing) workloads. This involves small transactions, like customer orders, banking transactions, payments, and booking systems.
+
+	* Online Analytical Processing (OLAP) should use Redshift. This is for tasks such as analyzing large amounts of data, reporting, and sales forecasting.
+
 	* Amazon Relational Database Service (Amazon RDS) is a managed service that makes it easy to set up, operate, and scale a relational database in the cloud. Amazon RDS gives you access to the capabilities of a familiar MySQL, MariaDB, Oracle, SQL Server, or PostgreSQL database.
+
+	* Multi-AZ provides an exact copy of your production database in another AZ. Used for disaster recovery. In the event of a failure, RDS will automatically failover to the standby instance.
 
 1. Amazon Redshift.
 
@@ -836,19 +907,71 @@ PostgreSQL).
 
 1. AWS Direct Connect.
 
+	* Direct Connect directly connects your data centre to AWS. Useful for high-throughput workloads that require a stable and reliable secure connection.
+
 1. Elastic Load Balancing (ELB).
 
 1. AWS Global Accelerator.
 
 1. AWS PrivateLink.
 
+	* AWS PrivateLink enables peering VPCs to tens, hundreds, or thousands of customer VPCs. Does not require VPC peering, route tables, NAT Gateways, Internet Gateways, etc. Requires a Network Load Balance on the service VPC and an Elastic Network Interface (ENI) on the customer VPC.
+
 1. Amazon Route 53.
 
+	* An alias is an AWS concept, and should be choosed over CNAME.
+
+	* Common DNS record types:
+		* Start of Authority (SOA) Records. Stores the name of the server that supplied the data for the zone, the admministrator, the current version of thedata, and the default number of seconds for the time-to-live file on resource records.
+		* Canonical Name (CNAME). Used to resolve one domain name to another. For example, you may have a mobile website with the domain name http://m.acloud.guru that is used for when users browse to your domain name on their mobile devices.
+		* Name Server (NS) Records. Used by top-level domain servers to direct traffic to the content DNS server that contains the authoritative DNS records.
+		* A Records. Fundamental type of DNS record. Used to translate the name of the domain to an IP address.
+		* Alias Records. Used to map resource record sets in your hosted zone to load balancers, CloudFront distributions, or S3 buckets that are configured as websites. Work like a CNAME record in that you can map one DNS name to another "target" DNS name.
+
+	* Time to Live (TTL) is the length that a DNS record is cached on either the resolving server or the user's own local PC.
+
+	* Routing policies available in Route 53:
+		* **Simple Routing:** You can only have one record with multiple IP addresses. If you specify multiple values, Route 53 returns all values to the user in a random order.
+		* **Weighted Routing:** Route 53 will send certain percentage of traffic to AZs, regions etc.
+		* **Latency-Based Routing:** Route53 will send traffic to the lower latency option.
+		* **Failover Routing:** An Active Passive setup which will Failover automatically.
+		* **Geolocation Routing:** Traffic will be sent based on the originating location.
+		* **Geoproximity Routing (Traffic Flow Only):** Lets Route 53 route traffic to your resources based on the geographic location of your users and resources. You can also optionally choose to route traffic by specifying a value known as a bias. The bias expands or shrinks the size of the geopgraphic region from which traffic is routed to a resource. You must use Route 53 traffic flow.
+		* **Multivalue Answer Routing:** Distributes DNS responses across multiple IP addresses.
+
+	* You can buy domain names directly with AWS. It can take up to 3 days to register depending on the circumstances.
+
+	* Health checks can be set on individual record sets. If a record fails, it will be removed from Route 53 until it passes. You can set SNS notifications to alert you about failed health checks.
+
 1. AWS Transit Gateway.
+
+	* AWS Transit Gateway works with Direct Connect as well as VPN connections. It supports IP multicast (which is not supported by any other AWS service). Mostly used for audio and video distribution.
 
 1. Amazon VPC.
 
 	* A Virtual Private Cloud (VPC) is a virtual network dedicated to a single AWS account. It is logically isolated from other virtual networks in the AWS cloud.
+
+	* It consists of internet gateways (or virtual private gateways), route tables, network access control lists, subnets, and security groups.
+
+	* 1 subnet is always in 1 AZ.
+
+	* NAT Gateways are redundant inside the AZ. They start at 5 Gbps and scales to 45 Gbps. No patching is required. They are not associated with any Security Groups. They are automatically assigned a public IP address when created.
+
+	* To create an AZ-independent architecture, create a NAT gateway in each AZ and configure your routing to ensure resources use the NAT gateway in the same AZ.
+
+	* Security Groups are stateful - if you send a request from your instance, the response traffic for that request is allowed to flow regardless of inbound Security Group rules.
+
+	* Network ACLs:
+		* **Default:** Allows all outbound and inbound traffic.
+		* **Custom:** Denies all outbound and inbound traffic until you add rules.
+
+	* You can associate a network ACL with multiple subnets; however, a subnet can be associated with only 1 network ACL at a time. Network ACLs contain a numbered list of rules that are evaluated in order, starting with the lowest numbered rule.
+
+	* Network ACLs are stateless; responses to allowed inbound traffic are subject to the rules for outbound traffic (and vice versa).
+
+	* Each subnet in your VPC must be associated with a network ACL. If you do not explicitly associate a subnet with a network ACL, it will automatically be associated with the default network ACL.
+
+	* Blocking IP addresses is done using network ACLs, and not Security Groups.
 
 1. AWS VPN.
 
@@ -929,21 +1052,35 @@ PostgreSQL).
 
 1. AWS Backup.
 
+	* Use AWS Backup to back up AWS services, such as EC2, EBS, EFS, Amazon FSx for Lustre, Amazon FSx for Windows File Server, and AWS Storage Gateway.
+
+	* You can use AWS Organizations in conjunction with AWS Backup to back up your different AWS services across multiple AWS accounts.
+
+	* AWS Backup gives you centralised control, letting you automate your backups and define lifecycle policies for your data. You get better compliance, as you can enforce your backup policies, ensure your backups are encrypted, and audit them once complete.
+
 2. Amazon Elastic Block Store (Amazon EBS).
 
 	* EBS provides persistent block storage volumes for your virtual machine drives. It stores data in equally sized blocks and organizes them into a hierarchy like a traditional file system. Each EBS volume is automatically replicated within its AZ to protect from component failure. The volumes are provisioned in size and attached to EC2 instances in a way that’s like the local disk drive on a physical machine.
 
+	* Volumes are virtual hard disks that exist on EBS. You need a minimum of 1 volume per EC2 instance (the root device volume).
+
     * EBS must be paired with an EC2 instance and will always be in the same availability zone as the EC2 instance. You can change EBS volume sizes on the fly, including changing the size and storage type. When you need a high-performance storage service for a single instance, use EBS.
 
-    * A summary of the EBS types is shown below:
+    * A summary of the EBS SSD types is shown below:
         <p align="center">
-        <img src="/res/EBS_overview.JPG">
+        <img src="/res/EBS_SSD_overview.JPG">
+        </p>
+
+    * A summary of the EBS SSD types is shown below:
+        <p align="center">
+        <img src="/res/EBS_HDD_overview.JPG">
         </p>
 
     * Regarding Snapshots:
+	    * Snapshots exist on S3.
         * Snapshots are point in time copies of volumes.
         * Snapshots are incremental, only the blocks that have changed since your last snapshot are moved to S3.
-        * To create a snapshot for EBS volumes that serve as root devices, you should stop the instance before taking the snapshot. A snapshot can be taken while the instance is running.
+        * To create a snapshot for EBS volumes that serve as root devices, you should stop the instance before taking the snapshot. A snapshot can be taken while the instance is running (although it is recommended to stop the instance).
         * You can create Amazon Machine Images (AMI's) from Snapshots.
         * To move an EC2 volume from one AZ to another, take a snapshot of it, create an AMI from the snapshot and then use the AMI to launch the EC2 instance in a new AZ.
         * To move an EC2 volume from one region to another, take a snapshot of it, create an AMI from the snapshot and then copy the AMI from one region to the other. Then use the copied AMI to launch the new EC2 instance in the new region.
@@ -970,6 +1107,8 @@ PostgreSQL).
 
     * EFS supports the NFSv4 protocol. You only pay for the storage you use with storage scaling up to petabytes. EFS can support thousands of NFS connections. Data is stored across multiple AZs within a region and EFS provides read after write consistency.
 
+	* Compatible with Linux-based AMI (Windows not currently supported).
+
 1. Amazon FSx (for all types).
 
 	* Amazon FSx for Windows File Server provides a fully managed native Microsoft file system so you can easily move your Windows-based applications that require file storage to AWS. Amazon FSx is built on Windows Server.
@@ -980,7 +1119,7 @@ PostgreSQL).
 
 1. Amazon S3.
 
-	* Amazon S3 (Simple, Storage, Service) is an object storage system, designed to provide archiving and data control options and to interface with other services beyond EC2. It’s also useful for storing static html pages and shared storage for applications
+	* Amazon S3 (Simple, Storage, Service) is an object storage system, designed to provide archiving and data control options and to interface with other services beyond EC2. It’s also useful for storing static html pages and shared storage for applications.
 
     * S3 is good at storing long-term data due to its archiving system. Things like reports and records, which may go unused for years, can be stored on S3 at a lower cost than the other two storage services discussed.
 
@@ -1011,10 +1150,13 @@ PostgreSQL).
         * Secure data using Access Control Lists and Bucket Policies.
 
     * S3 Storage Classes:
-        * **S3 Standard:** 99.99% availability and 99.999999999% durability. Data is stored redundantly across multiple devices and in multiple facilities.
+        * **S3 Standard:** 99.99% availability and 99.999999999% durability. Data is stored redundantly across multiple devices and in multiple facilities (>=3 AZs).
         * **S3 - IA (Infrequently Accessed):** For data that is accessed less frequently, but requires rapid access when needed. Lower fee than S3, but you are charged a retrieval fee.
-        * **S3 One Zone - IA:** Like IA but you do not require multiple Availability Zone data resilience.
+        * **S3 One Zone - IA:** Like IA but you do not require multiple Availability Zone data resilience. This is 20% less than regular S3-IA. Great for long-lived, infrequently accessed, non-critical data.
         * **S3 - Intelligent Tiering:** Designed to optimise costs by automatically moving data to the most cost-effective access tier, without performance impact or operational overhead.
+        * **Glacier Instant Retrieval:** Long-term data archiving with intance retrieval time. Retrieval fee applies.
+        * **Glacier Flexible Retrieval:** Archive data that does not require immediate access but needs flexibility to retrieve larget sets of data at no cost (e.g. DR). Can be minutes or up to 12 hours. Retrieval fee applies.
+        * **Glacier Deep Archive:** Cheapest storage designed for retaining data sets for 7-10 years. Standard retrieval time is 12 hours, and the bulk retrieval time is 48 hours. Retrieval fee applies.
 
     * A summary of the AWS storage tiers is shown below:
         <p align="center">
