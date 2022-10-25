@@ -49,11 +49,11 @@
 
 1. Designing a role-based access control strategy (for example, AWS Security Token Service [AWS STS], role switching, cross-account access).
 
-	* Cross-account role access gives you the ability to set up temporary access you can easily control.
+    * Cross-account role access gives you the ability to set up temporary access you can easily control.
 
 1. Designing a security strategy for multiple AWS accounts (for example, AWS Control Tower, service control policies [SCPs]).
 
-	* SCPs are the only way to restrict what the root account can do.
+    * SCPs are the only way to restrict what the root account can do.
 
 1. Determining the appropriate use of resource policies for AWS services.
 
@@ -81,9 +81,9 @@
 
 1. Designing VPC architectures with security components (for example, security groups, route tables, network ACLs, NAT gateways).
 
-	* A standard architecture is shown below:
-		<p align="center">
-        	<img src="/res/VPC_architecture.JPG">
+    * A standard architecture is shown below:
+        <p align="center">
+            <img src="/res/VPC_architecture.JPG">
         </p>
 
 1. Determining network segmentation strategies (for example, using public subnets and private subnets).
@@ -130,7 +130,7 @@
 
 1. AWS managed services with appropriate use cases (for example, AWS Transfer Family, Amazon Simple Queue Service [Amazon SQS], Secrets Manager).
 
-	* The AWS Transfer Family allows you to easily move files in and out of S3 or EFS using SFTP, FTPS, or FTP. It excels with bringing legacy application storage to the cloud.
+    * The AWS Transfer Family allows you to easily move files in and out of S3 or EFS using SFTP, FTPS, or FTP. It excels with bringing legacy application storage to the cloud.
 
 1. Caching strategies.
 
@@ -176,7 +176,7 @@
         * A read replica can be cross-AZ and cross-region.
         * Each read replica has its own DNS endpoint.
         * Read replicas require automatic backup to be enabled.
-        * Read replicas can be promoted to be their ownV database. This breaks the replication.
+        * Read replicas can be promoted to be their own database. This breaks the replication.
 
 1. Workflow orchestration (for example, AWS Step Functions).
 
@@ -375,9 +375,9 @@ PostgreSQL).
 
     * AWS DataSync is used to move large amounts of data from on-premises to AWS. It is used with NFS and SMB compatible file systems. The replication can be done hourly, daily, or weekly. The DataSync agent is required to start the replication. It can be used to replicate EFS to EFS.
 
-    * AWS DataSync automatically encrypts data and accelerates transfer over the WAN. Datasync performs automatic data integrity checks in-transit and at-rest.
+    * AWS DataSync automatically encrypts data and accelerates transfer over the WAN. DataSync performs automatic data integrity checks in-transit and at-rest.
 
-	* DataSync is best for a one-time migration, and a hybrid architecture with continuous sync is more suited for Storage Gateway.
+    * AWS DataSync is best for a one-time migration, and a hybrid architecture with continuous sync is more suited for Storage Gateway.
 
 1. Data transformation services with appropriate use cases (for example, AWS Glue).
 
@@ -609,9 +609,9 @@ PostgreSQL).
 
 1. Migration and data transfer.
 
-	* AWS Migration Hub gives you a single place to track the process of your application migration to AWS. It integrates with Server Migration Service (SMS) and Database Migration Service (DMS).
+    * AWS Migration Hub gives you a single place to track the process of your application migration to AWS. It integrates with Server Migration Service (SMS) and Database Migration Service (DMS).
 
-	* SMS can create an on-premises architecture into EMIs. DMS can run migrate or convert on-premises databases through AWS Schema Conversion Tool.
+    * SMS can create an on-premises architecture into EMIs. DMS can run migrate or convert on-premises databases through AWS Schema Conversion Tool.
 
 1. Networking, connectivity, and content delivery.
 
@@ -637,13 +637,15 @@ PostgreSQL).
 
 1. AWS Data Exchange.
 
-	* AWS Data Exchange is a service that makes it easy for AWS customers to find, subscribe to, and use third-party data in the AWS Cloud.
+    * AWS Data Exchange is a service that makes it easy for AWS customers to find, subscribe to, and use third-party data in the AWS Cloud.
 
-	* As a subscriber, you can find and subscribe to thousands of products from qualified data providers. Then, you can use the AWS Data Exchange console or APIs to create, view, manage, and access data sets for use across a variety of AWS analytics and machine learning services.
+    * As a subscriber, you can find and subscribe to thousands of products from qualified data providers. Then, you can use the AWS Data Exchange console or APIs to create, view, manage, and access data sets for use across a variety of AWS analytics and machine learning services.
 
 1. AWS Data Pipeline.
 
-	* AWS Data Pipeline is a web service that helps you reliably process and move data between different AWS compute and storage services, as well as on-premises data sources, at specified intervals. With AWS Data Pipeline, you can regularly access your data where it’s stored, transform and process it at scale, and efficiently transfer the results to AWS services such as Amazon S3, Amazon RDS, Amazon DynamoDB, and Amazon EMR.
+    * AWS Data Pipeline is a managed AWS service that helps you reliably process and move data between different AWS compute and storage services, as well as on-premises data sources, at specified intervals. It is used for ETL workflows that automate movement and transformation of data.
+
+    * With AWS Data Pipeline, you can regularly access your data where it’s stored, transform and process it at scale, and efficiently transfer the results to AWS services such as Amazon S3, Amazon RDS, Amazon DynamoDB, and Amazon EMR.
 
 1. Amazon EMR.
 
@@ -665,15 +667,15 @@ PostgreSQL).
 
 1. AWS Lake Formation.
 
-	* AWS Lake Formation is a service that makes it easy to set up, secure, and manage your data lake. With Lake Formation you can discover, cleanse, transform, and ingest data into your data lake from various sources, Define fine-grained permissions at database, table or column level and then share controlled access across analytic, machine learning and ETL services.
+    * AWS Lake Formation is a service that makes it easy to set up, secure, and manage your data lake. With Lake Formation you can discover, cleanse, transform, and ingest data into your data lake from various sources, define fine-grained permissions at database, table or column level and then share controlled access across analytic, machine learning and ETL services.
 
 1. Amazon Managed Streaming for Apache Kafka (Amazon MSK).
 
-	* Amazon MSK is a fully managed service that makes it easy for you to build and run applications that use Apache Kafka to process streaming data. Apache Kafka is an open-source platform for building real-time streaming data pipelines and applications. With Amazon MSK, you can use native Apache Kafka APIs to populate data lakes, stream changes to and from databases, and power machine learning and analytics applications.
+    * Amazon MSK is a fully managed service that makes it easy for you to build and run applications that use Apache Kafka to process streaming data. Apache Kafka is an open-source platform for building real-time streaming data pipelines and applications. With Amazon MSK, you can use native Apache Kafka APIs to populate data lakes, stream changes to and from databases, and power machine learning and analytics applications.
 
 1. Amazon OpenSearch Service (Amazon Elasticsearch Service).
 
-    * Elasticsearch is a fully managed version of the open-source application Elasticsearch. It allows you to quickly search over your stored data and analyse the data you get back. It is commonly used as part of an Elasticsearch, Logstash, Kibana (ELK) stack. ELK can be used as a 3rd party logging solution.
+    * Elasticsearch is a fully managed version of the open-source application Elasticsearch. It allows you to quickly search over your stored data and analyse the data you get back. It is commonly used as part of an Elasticsearch, Logstash, and Kibana (ELK) stack. ELK can be used as a 3rd party logging solution.
 
 1. Amazon QuickSight.
 
@@ -689,11 +691,11 @@ PostgreSQL).
 
 1. Amazon AppFlow.
 
-	* Amazon AppFlow is a fully managed integration service that enables you to securely transfer data between Software-as-a-Service (SaaS) applications like Salesforce, SAP, Zendesk, Slack, and ServiceNow, and AWS services like Amazon S3 and Amazon Redshift, in just a few clicks.
+    * Amazon AppFlow is a fully managed integration service that enables you to securely transfer data between Software-as-a-Service (SaaS) applications like Salesforce, SAP, Zendesk, Slack, and ServiceNow, and AWS services like Amazon S3 and Amazon Redshift, in just a few clicks.
 
 1. AWS AppSync.
 
-	* AWS AppSync allows your applications to access exactly the data they need. Create a flexible API to securely access, manipulate, and combine data from multiple sources. Pay only for requests to your API and for real-time messages delivered to connected clients.
+    * AWS AppSync allows your applications to access exactly the data they need. Create a flexible API to securely access, manipulate, and combine data from multiple sources. Pay only for requests to your API and for real-time messages delivered to connected clients.
 
 1. Amazon EventBridge (Amazon CloudWatch Events).
 
@@ -703,7 +705,9 @@ PostgreSQL).
 
 1. Amazon MQ.
 
-	* Amazon MQ is a managed message broker service for Apache ActiveMQ and RabbitMQ that makes it easy to set up, migrate and operate message brokers on AWS Cloud.
+    * Amazon MQ is a managed message broker service for Apache ActiveMQ and RabbitMQ that makes it easy to set up, migrate and operate message brokers on AWS Cloud.
+
+    * Preferred over SNS with SQS for new applications, and required for anything specific to JMS and some other protocols. Note that Amazon MQ restricts access to private networking.
 
 1. Amazon Simple Notification Service (Amazon SNS).
 
@@ -738,31 +742,31 @@ PostgreSQL).
 
 1. AWS Step Functions.
 
-	* AWS Step Functions is a serverless orchestration service that lets you integrate with AWS Lambda functions and other AWS services to build business-critical applications. Through Step Functions' graphical console, you see your application’s workflow as a series of event-driven steps.
+    * AWS Step Functions is a serverless orchestration service that lets you integrate with AWS Lambda functions and other AWS services to build business-critical applications. Through Step Functions' graphical console, you see your application’s workflow as a series of event-driven steps.
 
 #### AWS Cost Management
 
 1. AWS Budgets.
 
-	* Budgets allow organisations to easily plan and set expectations around cloud costs. You can easily track your ongoing spend and create alerts to let users know when they're close to exceeding their allotted spend.
+    * Budgets allow organisations to easily plan and set expectations around cloud costs. You can easily track your ongoing spend and create alerts to let users know when they're close to exceeding their allotted spend.
 
 1. AWS Cost and Usage Report.
 
-	* The AWS Cost and Usage Reports (AWS CUR) contains the most comprehensive set of cost and usage data available. You can use Cost and Usage Reports to publish your AWS billing reports to an Amazon Simple Storage Service (Amazon S3) bucket that you own. You can receive reports that break down your costs by the hour, day, or month, by product or product resource, or by tags that you define yourself. AWS updates the report in your bucket once a day in comma-separated value (CSV) format. You can view the reports using spreadsheet software such as Microsoft Excel or Apache OpenOffice Calc, or access them from an application using the Amazon S3 API.
+    * The AWS Cost and Usage Reports (AWS CUR) contains the most comprehensive set of cost and usage data available. You can use Cost and Usage Reports to publish your AWS billing reports to an Amazon Simple Storage Service (Amazon S3) bucket that you own. You can receive reports that break down your costs by the hour, day, or month, by product or product resource, or by tags that you define yourself. AWS updates the report in your bucket once a day in comma-separated value (CSV) format. You can view the reports using spreadsheet software such as Microsoft Excel or Apache OpenOffice Calc, or access them from an application using the Amazon S3 API.
 
 1. AWS Cost Explorer.
 
-	* Cost Explorer is an easy-to-use tool that allows you to visualise your cloud costs. You can generate reports based on a variety of factors, including resource tags.
+    * Cost Explorer is an easy-to-use tool that allows you to visualise your cloud costs. You can generate reports based on a variety of factors, including resource tags.
 
 1. Savings Plans.
 
-	* Savings Plans is a flexible pricing model offering lower prices compared to On-Demand pricing, in exchange for a specific usage commitment (measured in $/hour) for a one or three-year period. AWS offers three types of Savings Plans – Compute Savings Plans, EC2 Instance Savings Plans, and Amazon SageMaker Savings Plans. Compute Savings Plans apply to usage across Amazon EC2, AWS Lambda, and AWS Fargate. The EC2 Instance Savings Plans apply to EC2 usage, and Amazon SageMaker Savings Plans apply to Amazon SageMaker usage.
+    * Savings Plans is a flexible pricing model offering lower prices compared to On-Demand pricing, in exchange for a specific usage commitment (measured in $/hour) for a one or three-year period. AWS offers three types of Savings Plans – Compute Savings Plans, EC2 Instance Savings Plans, and Amazon SageMaker Savings Plans. Compute Savings Plans apply to usage across Amazon EC2, AWS Lambda, and AWS Fargate. The EC2 Instance Savings Plans apply to EC2 usage, and Amazon SageMaker Savings Plans apply to Amazon SageMaker usage.
 
 #### Compute
 
 1. AWS Batch.
 
-	* AWS Batch lets developers, scientists, and engineers efficiently run hundreds of thousands of batch and ML computing jobs while optimizing compute resources, so you can focus on analyzing results and solving problems. 
+    * AWS Batch lets developers, scientists, and engineers efficiently run hundreds of thousands of batch and ML computing jobs while optimizing compute resources, so you can focus on analysing results and solving problems. 
 
 1. Amazon EC2.
 
@@ -821,35 +825,35 @@ PostgreSQL).
 
 1. Amazon EC2 Auto Scaling.
 
-	* Amazon EC2 Auto Scaling helps you maintain application availability and allows you to automatically add or remove EC2 instances according to conditions you define. You can use the fleet management features of EC2 Auto Scaling to maintain the health and availability of your fleet. You can also use the dynamic and predictive scaling features of EC2 Auto Scaling to add or remove EC2 instances. Dynamic scaling responds to changing demand and predictive scaling automatically schedules the right number of EC2 instances based on predicted demand. Dynamic scaling and predictive scaling can be used together to scale faster.
+    * Amazon EC2 Auto Scaling helps you maintain application availability and allows you to automatically add or remove EC2 instances according to conditions you define. You can use the fleet management features of EC2 Auto Scaling to maintain the health and availability of your fleet. You can also use the dynamic and predictive scaling features of EC2 Auto Scaling to add or remove EC2 instances. Dynamic scaling responds to changing demand and predictive scaling automatically schedules the right number of EC2 instances based on predicted demand. Dynamic scaling and predictive scaling can be used together to scale faster.
 
 1. AWS Elastic Beanstalk.
 
-	* Easy-to-use all in one service for deploying and scaling web applications and services developed with a variety of supported languages.
+    * Easy-to-use all in one service for deploying and scaling web applications and services developed with a variety of supported languages.
 
 1. AWS Outposts.
 
-	* AWS Outposts is a family of fully managed solutions delivering AWS infrastructure and services to virtually any on-premises or edge location for a truly consistent hybrid experience. Outposts solutions allow you to extend and run native AWS services on premises, and is available in a variety of form factors, from 1U and 2U Outposts servers to 42U Outposts racks, and multiple rack deployments.
+    * AWS Outposts is a family of fully managed solutions delivering AWS infrastructure and services to virtually any on-premises or edge location for a truly consistent hybrid experience. Outposts solutions allow you to extend and run native AWS services on premises, and is available in a variety of form factors, from 1U and 2U Outposts servers to 42U Outposts racks, and multiple rack deployments.
 
-	* With AWS Outposts, you can run some AWS services locally and connect to a broad range of services available in the local AWS Region. Run applications and workloads on premises using familiar AWS services, tools, and APIs. Outposts supports workloads and devices requiring low latency access to on-premises systems, local data processing, data residency, and application migration with local system interdependencies. 
+    * With AWS Outposts, you can run some AWS services locally and connect to a broad range of services available in the local AWS Region. Run applications and workloads on premises using familiar AWS services, tools, and APIs. Outposts supports workloads and devices requiring low latency access to on-premises systems, local data processing, data residency, and application migration with local system interdependencies. 
 
 1. AWS Serverless Application Repository.
 
-	* The AWS Serverless Application Repository is a managed repository for serverless applications. It enables teams, organizations, and individual developers to store and share reusable applications, and easily assemble and deploy serverless architectures in powerful new ways. Using the Serverless Application Repository, you don't need to clone, build, package, or publish source code to AWS before deploying it. Instead, you can use pre-built applications from the Serverless Application Repository in your serverless architectures, helping you and your teams reduce duplicated work, ensure organizational best practices, and get to market faster.
+    * The AWS Serverless Application Repository is a managed repository for serverless applications. It enables teams, organizations, and individual developers to store and share reusable applications, and easily assemble and deploy serverless architectures in powerful new ways. Using the Serverless Application Repository, you don't need to clone, build, package, or publish source code to AWS before deploying it. Instead, you can use pre-built applications from the Serverless Application Repository in your serverless architectures, helping you and your teams reduce duplicated work, ensure organizational best practices, and get to market faster.
 
 1. VMware Cloud on AWS.
 
-	* VMware Cloud on AWS provides dedicated, single-tenant cloud infrastructure with support multiple SDDC per organization, with up to 16 hosts per cluster, delivered on the next-generation bare metal AWS infrastructure based on the latest Amazon EC2 Storage Optimized high I/O instances and featuring low-latency Non-Volatile Memory Express (NVMe) based SSDs.
+    * VMware Cloud on AWS provides dedicated, single-tenant cloud infrastructure with support multiple SDDC per organization, with up to 16 hosts per cluster, delivered on the next-generation bare metal AWS infrastructure based on the latest Amazon EC2 Storage Optimized high I/O instances and featuring low-latency Non-Volatile Memory Express (NVMe) based SSDs.
 
 1. AWS Wavelength.
 
-	* AWS Wavelength embeds AWS compute and storage services within 5G networks, providing mobile edge computing infrastructure for developing, deploying, and scaling ultra-low-latency applications.
+    * AWS Wavelength embeds AWS compute and storage services within 5G networks, providing mobile edge computing infrastructure for developing, deploying, and scaling ultra-low-latency applications.
 
 #### Containers
 
 1. Amazon Elastic Container Registry (Amazon ECR).
 
-	* Amazon ECR is a fully managed container registry offering high-performance hosting, so you can reliably deploy application images and artifacts anywhere.
+    * Amazon ECR is a fully managed container registry offering high-performance hosting, so you can reliably deploy application images and artifacts anywhere.
 
 1. Amazon Elastic Container Service (Amazon ECS).
 
@@ -863,9 +867,9 @@ PostgreSQL).
 
 1. Amazon ECS Anywhere.
 
-	* Amazon Elastic Container Service (ECS) Anywhere is a feature of Amazon ECS that enables you to easily run and manage container workloads on customer-managed infrastructure. 
+    * Amazon Elastic Container Service (ECS) Anywhere is a feature of Amazon ECS that enables you to easily run and manage container workloads on customer-managed infrastructure. 
 
-	* ECS Anywhere builds upon the ease and simplicity of Amazon ECS to provide a consistent tooling and API experience across your container-based applications. Whether on-premises or in the cloud, you'll have similar cluster management, workload scheduling, and monitoring you've come to know from Amazon ECS.
+    * ECS Anywhere builds upon the ease and simplicity of Amazon ECS to provide a consistent tooling and API experience across your container-based applications. Whether on-premises or in the cloud, you'll have similar cluster management, workload scheduling, and monitoring you've come to know from Amazon ECS.
 
 1. Amazon Elastic Kubernetes Service (Amazon EKS).
 
@@ -875,11 +879,11 @@ PostgreSQL).
 
 1. Amazon EKS Anywhere.
 
-	* Amazon EKS Anywhere is a new deployment option for Amazon EKS that allows customers to create and operate Kubernetes clusters on customer-managed infrastructure, supported by AWS. Customers can now run Amazon EKS Anywhere on their own on-premises infrastructure on bare metal servers or using VMware vSphere, with support for more deployment targets coming in the near future.
+    * Amazon EKS Anywhere is a new deployment option for Amazon EKS that allows customers to create and operate Kubernetes clusters on customer-managed infrastructure, supported by AWS. Customers can now run Amazon EKS Anywhere on their own on-premises infrastructure on bare metal servers or using VMware vSphere, with support for more deployment targets coming soon.
 
 1. Amazon EKS Distro.
 
-	* Amazon EKS Distro is a Kubernetes distribution built and maintained by AWS, and used by Amazon Elastic Kubernetes Service (EKS), that makes it easy to create reliable and secure clusters.
+    * Amazon EKS Distro is a Kubernetes distribution built and maintained by AWS and used by Amazon Elastic Kubernetes Service (EKS), that makes it easy to create reliable and secure clusters.
 
 #### Database
 
@@ -903,7 +907,7 @@ PostgreSQL).
 
 1. Amazon DocumentDB (with MongoDB compatibility).
 
-	* Amazon DocumentDB is a scalable, highly durable, and fully managed database service for operating mission-critical MongoDB workloads.
+    * Amazon DocumentDB is a scalable, highly durable, and fully managed database service for operating mission-critical MongoDB workloads.
 
 1. Amazon DynamoDB.
 
@@ -917,7 +921,7 @@ PostgreSQL).
 
     * Eventually consistent will achieve consistency within a second. Strongly consistent will achieve consistency instantly.
 
-    * DynamoDB transactions provide developers ACIC properties across 1 or more tables within a single AWS account and region.
+    * DynamoDB transactions provide developers ACID properties across 1 or more tables within a single AWS account and region.
 
     * Point-in-Time Recovery (PITR) can protect against accidental writes or deletes. You can restore to any point in the last 35 days and up to 5 minutes in the past. Not enabled by default.
 
@@ -925,23 +929,23 @@ PostgreSQL).
 
     * Global Tables provides managed multi-master, multi-region replication. It is based on DynamoDB streams. Replication latency is under 1 second.
 
-	* DynamoDB Accelerator (DAX) is a caching soluton that can reduce DynamoDB response times from milliseconds to microseconds. The cache is highly available and lives inside the VPC you specify. You determine the node size and count for the cluster, TTL for the data, and maintenance windows for changes and updates.
+    * DynamoDB Accelerator (DAX) is a caching solution that can reduce DynamoDB response times from milliseconds to microseconds. The cache is highly available and lives inside the VPC you specify. You determine the node size and count for the cluster, TTL for the data, and maintenance windows for changes and updates.
 
 1. Amazon ElastiCache.
 
-	* ElastiCache is a managed version of 2 open-source technologies: Memcached and Redis. Memcached is a simple database caching solution with no failover, backups or multi-AZ support. Redis is a caching solution but can also function as a standalone database, which can provide backups, failover, and multi-AZ support.
+    * ElastiCache is a managed version of 2 open-source technologies: Memcached and Redis. Memcached is a simple database caching solution with no failover, backups, or multi-AZ support. Redis is a caching solution but can also function as a standalone database, which can provide backups, failover, and multi-AZ support.
 
 1. Amazon Keyspaces (for Apache Cassandra).
 
-	* Amazon Keyspaces (for Apache Cassandra) is a scalable, highly available, and managed Apache Cassandra–compatible database service. With Amazon Keyspaces, you can run your Cassandra workloads on AWS using the same Cassandra application code and developer tools that you use today. You don’t have to provision, patch, or manage servers, and you don’t have to install, maintain, or operate software
+    * Amazon Keyspaces (for Apache Cassandra) is a scalable, highly available, and managed Apache Cassandra–compatible database service. With Amazon Keyspaces, you can run your Cassandra workloads on AWS using the same Cassandra application code and developer tools that you use today. You don’t have to provision, patch, or manage servers, and you don’t have to install, maintain, or operate software
 
 1. Amazon Neptune.
 
-	* Amazon Neptune is a fast, reliable, fully managed graph database service that makes it easy to build and run applications that work with highly connected datasets. The core of Amazon Neptune is a purpose-built, high-performance graph database engine optimized for storing billions of relationships and querying the graph with milliseconds latency.
+    * Amazon Neptune is a fast, reliable, fully managed graph database service that makes it easy to build and run applications that work with highly connected datasets. The core of Amazon Neptune is a purpose-built, high-performance graph database engine optimized for storing billions of relationships and querying the graph with milliseconds latency.
 
 1. Amazon Quantum Ledger Database (Amazon QLDB).
 
-	* Amazon Quantum Ledger Database (QLDB) is a fully managed ledger database that provides a transparent, immutable, and cryptographically verifiable transaction log.
+    * Amazon Quantum Ledger Database (QLDB) is a fully managed ledger database that provides a transparent, immutable, and cryptographically verifiable transaction log.
 
 1. Amazon RDS.
 
@@ -955,25 +959,25 @@ PostgreSQL).
 
 1. Amazon Redshift.
 
-	* Amazon Redshift is a fully managed, petabyte-scale data warehouse service in the cloud. You can start with just a few hundred gigabytes of data and scale to a petabyte or more. This allows you to use your data to gain new insights for your business and customers.
+    * Amazon Redshift is a fully managed, petabyte-scale data warehouse service in the cloud. You can start with just a few hundred gigabytes of data and scale to a petabyte or more. This allows you to use your data to gain new insights for your business and customers.
 
 1. Amazon Timestream.
 
-	* Amazon Timestream is a fast, scalable, and serverless time series database service for IoT and operational applications that makes it easy to store and analyze trillions of events per day up to 1,000 times faster and at as little as 1/10th the cost of relational databases. Amazon Timestream saves you time and cost in managing the lifecycle of time series data by keeping recent data in memory and moving historical data to a cost optimized storage tier based upon user defined policies.
+    * Amazon Timestream is a fast, scalable, and serverless time series database service for IoT and operational applications that makes it easy to store and analyse trillions of events per day up to 1,000 times faster and at as little as 1/10th the cost of relational databases. Amazon Timestream saves you time and cost in managing the lifecycle of time series data by keeping recent data in memory and moving historical data to a cost optimized storage tier based upon user defined policies.
 
-	* Amazon Timestream’s purpose-built query engine lets you access and analyze recent and historical data together, without needing to specify explicitly in the query whether the data resides in the in-memory or cost-optimized tier. Amazon Timestream has built-in time series analytics functions, helping you identify trends and patterns in your data in near real-time. Amazon Timestream is serverless and automatically scales up or down to adjust capacity and performance, so you don’t need to manage the underlying infrastructure, freeing you to focus on building your applications.
+    * Amazon Timestream’s purpose-built query engine lets you access and analyse recent and historical data together, without needing to specify explicitly in the query whether the data resides in the in-memory or cost-optimized tier. Amazon Timestream has built-in time series analytics functions, helping you identify trends and patterns in your data in near real-time. Amazon Timestream is serverless and automatically scales up or down to adjust capacity and performance, so you don’t need to manage the underlying infrastructure, freeing you to focus on building your applications.
 
 #### Developer Tools
 
 1. AWS X-Ray.
 
-	* AWS X-Ray provides a complete view of requests as they travel through your application and filters visual data across payloads, functions, traces, services, APIs, and more with no-code and low-code motions.
+    * AWS X-Ray provides a complete view of requests as they travel through your application and filters visual data across payloads, functions, traces, services, APIs, and more with no-code and low-code motions.
 
 #### Front-End Web and Mobile
 
 1. AWS Amplify.
 
-	* AWS Amplify is a complete solution that lets frontend web and mobile developers easily build, ship, and host full-stack applications on AWS, with the flexibility to leverage the breadth of AWS services as use cases evolve. No cloud expertise needed.
+    * AWS Amplify is a complete solution that lets frontend web and mobile developers easily build, ship, and host full-stack applications on AWS, with the flexibility to leverage the breadth of AWS services as use cases evolve. No cloud expertise needed.
 
 1. Amazon API Gateway.
 
@@ -985,71 +989,71 @@ PostgreSQL).
 
 1. AWS Device Farm.
 
-	* AWS Device Farm is an application testing service that lets you improve the quality of your web and mobile apps by testing them across an extensive range of desktop browsers and real mobile devices; without having to provision and manage any testing infrastructure. The service enables you to run your tests concurrently on multiple desktop browsers or real devices to speed up the execution of your test suite, and generates videos and logs to help you quickly identify issues with your app.
+    * AWS Device Farm is an application testing service that lets you improve the quality of your web and mobile apps by testing them across an extensive range of desktop browsers and real mobile devices; without having to provision and manage any testing infrastructure. The service enables you to run your tests concurrently on multiple desktop browsers or real devices to speed up the execution of your test suite and generates videos and logs to help you quickly identify issues with your app.
 
 1. Amazon Pinpoint.
 
-	* Amazon Pinpoint offers marketers and developers one customizable tool to deliver customer communications across channels, segments, and campaigns at scale.
+    * Amazon Pinpoint offers marketers and developers one customizable tool to deliver customer communications across channels, segments, and campaigns at scale.
 
 #### Machine Learning
 
 1. Amazon Comprehend.
 
-	* Amazon Comprehend is a natural-language processing (NLP) service that uses machine learning to uncover valuable insights and connections in text.
+    * Amazon Comprehend is a natural-language processing (NLP) service that uses machine learning to uncover valuable insights and connections in text. Used for sentiment analysis.
 
 1. Amazon Forecast.
 
-	* Amazon Forecast is a time-series forecasting service based on machine learning (ML) and built for business metrics analysis.
+    * Amazon Forecast is a time-series forecasting service based on machine learning (ML) and built for business metrics analysis.
 
 1. Amazon Fraud Detector.
 
-	* Amazon Fraud Detector is a fully managed service enabling customers to identify potentially fraudulent activities and catch more online fraud faster.
+    * Amazon Fraud Detector is a fully managed service enabling customers to identify potentially fraudulent activities and catch more online fraud faster.
 
 1. Amazon Kendra.
 
-	* Amazon Kendra is an intelligent enterprise search service that allows users to search across different content repositories with built-in connectors.
+    * Amazon Kendra is an intelligent enterprise search service that allows users to search across different content repositories with built-in connectors. Used to build an intelligence search based on unstructured text.
 
 1. Amazon Lex.
 
-	* Amazon Lex is a fully managed artificial intelligence (AI) service with advanced natural language models to design, build, test, and deploy conversational interfaces in applications.
+    * Amazon Lex is a fully managed artificial intelligence (AI) service with advanced natural language models to design, build, test, and deploy conversational interfaces in applications.
 
 1. Amazon Polly.
 
-	* Amazon Polly uses deep learning technologies to synthesize natural-sounding human speech, so you can convert articles to speech. With dozens of lifelike voices across a broad set of languages, use Amazon Polly to build speech-activated applications.
+    * Amazon Polly uses deep learning technologies to synthesize natural-sounding human speech, so you can convert articles to speech. With dozens of lifelike voices across a broad set of languages, use Amazon Polly to build speech-activated applications.
 
 1. Amazon Rekognition.
 
-	* Amazon Rekognition offers pre-trained and customizable computer vision (CV) capabilities to extract information and insights from your images and videos.
+    * Amazon Rekognition offers pre-trained and customizable computer vision (CV) capabilities to extract information and insights from your images and videos.
 
 1. Amazon SageMaker.
 
-	* Amazon SageMaker is a fully managed machine learning service. With SageMaker, data scientists and developers can quickly and easily build and train machine learning models, and then directly deploy them into a production-ready hosted environment.
+    * Amazon SageMaker is a fully managed machine learning service. With SageMaker, data scientists and developers can quickly and easily build and train machine learning models, and then directly deploy them into a production-ready hosted environment.
 
 1. Amazon Textract.
 
-	* Amazon Textract is a machine learning (ML) service that automatically extracts text, handwriting, and data from scanned documents. It goes beyond simple optical character recognition (OCR) to identify, understand, and extract data from forms and tables. Today, many companies manually extract data from scanned documents such as PDFs, images, tables, and forms, or through simple OCR software that requires manual configuration (which often must be updated when the form changes). 
+    * Amazon Textract is a machine learning (ML) service that automatically extracts text, handwriting, and data from scanned documents. It goes beyond simple optical character recognition (OCR) to identify, understand, and extract data from forms and tables. Today, many companies manually extract data from scanned documents such as PDFs, images, tables, and forms, or through simple OCR software that requires manual configuration (which often must be updated when the form changes). 
 
-	* To overcome these manual and expensive processes, Textract uses ML to read and process any type of document, accurately extracting text, handwriting, tables, and other data with no manual effort. You can quickly automate document processing and act on the information extracted, whether you’re automating loans processing or extracting information from invoices and receipts. Textract can extract the data in minutes instead of hours or days. Additionally, you can add human reviews with Amazon Augmented AI to provide oversight of your models and check sensitive data.
+    * To overcome these manual and expensive processes, Textract uses ML to read and process any type of document, accurately extracting text, handwriting, tables, and other data with no manual effort. You can quickly automate document processing and act on the information extracted, whether you’re automating loans processing or extracting information from invoices and receipts. Textract can extract the data in minutes instead of hours or days. Additionally, you can add human reviews with Amazon Augmented AI to provide oversight of your models and check sensitive data.
 
 1. Amazon Transcribe.
 
-	* Powered by deep learning technologies, Amazon Transcribe is a fully managed and continuously trained automatic speech recognition service that automatically generates time-stamped text transcripts from audio files.
+    * Powered by deep learning technologies, Amazon Transcribe is a fully managed and continuously trained automatic speech recognition service that automatically generates time-stamped text transcripts from audio files.
 
 1. Amazon Translate.
 
-	* Amazon Translate is a neural machine translation service that delivers fast, high-quality, affordable, and customizable language translation. Neural machine translation is a form of language translation automation that uses deep learning models to deliver more accurate and more natural sounding translation than traditional statistical and rule-based translation algorithms.
+    * Amazon Translate is a neural machine translation service that delivers fast, high-quality, affordable, and customizable language translation. Neural machine translation is a form of language translation automation that uses deep learning models to deliver more accurate and more natural sounding translation than traditional statistical and rule-based translation algorithms.
 
 #### Management and Governance
 
 1. AWS Auto Scaling.
 
-	* AWS Auto Scaling offers a centralized place to manage configurations for a wider range of scalable resources, such as EC2 instances, Amazon Elastic Container Service (ECS), Amazon DynamoDB tables or Amazon Relational Database Aurora read replicas.
+    * AWS Auto Scaling offers a centralized place to manage configurations for a wider range of scalable resources, such as EC2 instances, Amazon Elastic Container Service (ECS), Amazon DynamoDB tables or Amazon Relational Database Aurora read replicas.
 
 1. AWS CloudFormation.
 
-	* CloudFormation allows you to provision resources quickly and consistently, and manage them throughout their lifecycles, by treating infrastructure as code.
+    * CloudFormation allows you to provision resources quickly and consistently, and manage them throughout their lifecycles, by treating infrastructure as code.
 
-	* Declarative programming language which supports JSON or YAML formatting.
+    * Declarative programming language which supports JSON or YAML formatting.
 
 1. AWS CloudTrail.
 
@@ -1077,81 +1081,85 @@ PostgreSQL).
 
 1. AWS Command Line Interface (AWS CLI).
 
-	* The AWS Command Line Interface (AWS CLI) is a unified tool to manage your AWS services. With just one tool to download and configure, you can control multiple AWS services from the command line and automate them through scripts.
+    * The AWS Command Line Interface (AWS CLI) is a unified tool to manage your AWS services. With just one tool to download and configure, you can control multiple AWS services from the command line and automate them through scripts.
 
 1. AWS Compute Optimizer.
 
-	* AWS Compute Optimizer recommends optimal AWS Compute resources for your workloads to reduce costs and improve performance by using machine learning to analyze historical utilization metrics. Over-provisioning compute (Amazon EC2 and ASGs) can lead to unnecessary infrastructure cost and under-provisioning compute can lead to poor application performance.
+    * AWS Compute Optimizer recommends optimal AWS Compute resources for your workloads to reduce costs and improve performance by using machine learning to analyse historical utilization metrics. Over-provisioning compute (Amazon EC2 and ASGs) can lead to unnecessary infrastructure cost and under-provisioning compute can lead to poor application performance.
  
-	* Compute Optimizer helps you choose the optimal Amazon EC2 instance types, including those that are part of an Amazon EC2 Auto Scaling group, based on your utilization data. 
+    * Compute Optimizer helps you choose the optimal Amazon EC2 instance types, including those that are part of an Amazon EC2 Auto Scaling group, based on your utilization data. 
 
 1. AWS Config.
 
-	* Config is an inventory management and control tool. It allows you to show the history of your infrastructure along with creating rules to make it conform to the best practices you've laid out. Config also offers the ability to remediate problems using Automation documents.
+    * Config is an inventory management and control tool. It allows you to show the history of your infrastructure along with creating rules to make it conform to the best practices you've laid out. Config also offers the ability to remediate problems using Automation documents.
 
 1. AWS Control Tower.
 
-	* AWS Control Tower provides the easiest way to set up and govern a secure, multi-account AWS environment, called a landing zone. It creates your landing zone using AWS Organizations, bringing ongoing account management and governance as well as implementation best practices based on AWS’s experience working with thousands of customers as they move to the cloud.
+    * AWS Control Tower provides the easiest way to set up and govern a secure, multi-account AWS environment, called a landing zone. It creates your landing zone using AWS Organizations, bringing ongoing account management and governance as well as implementation best practices based on AWS’s experience working with thousands of customers as they move to the cloud.
 
 1. AWS License Manager.
 
-	* License Manager makes it easier for you to manage your software licenses from vendors, such as Microsoft, SAP, Oracle, and IBM, across AWS and your on-premises environments.
+    * License Manager makes it easier for you to manage your software licenses from vendors, such as Microsoft, SAP, Oracle, and IBM, across AWS and your on-premises environments.
 
 1. Amazon Managed Grafana.
 
-	* Amazon Managed Grafana is a fully managed service for Grafana, a popular open-source analytics platform that lets you query, visualize, understand, and receive alerts about your metrics no matter where they are stored.
+    * Amazon Managed Grafana is a fully managed service for Grafana, a popular open-source analytics platform that lets you query, visualize, understand, and receive alerts about your metrics no matter where they are stored.
 
 1. Amazon Managed Service for Prometheus.
 
-	* Amazon Managed Service for Prometheus is a Prometheus-compatible service that monitors and provides alerts on containerized applications and infrastructure at scale. The service is integrated with Amazon Elastic Kubernetes Service (EKS), Amazon Elastic Container Service (ECS), and AWS Distro for OpenTelemetry.
+    * Amazon Managed Service for Prometheus is a Prometheus-compatible service that monitors and provides alerts on containerized applications and infrastructure at scale. The service is integrated with Amazon Elastic Kubernetes Service (EKS), Amazon Elastic Container Service (ECS), and AWS Distro for OpenTelemetry.
 
 1. AWS Management Console.
 
-	* The AWS Management Console is a web application that comprises and refers to a broad collection of service consoles for managing AWS resources.
+    * The AWS Management Console is a web application that comprises and refers to a broad collection of service consoles for managing AWS resources.
 
 1. AWS Organizations.
 
-	* AWS Organizations is a free governance tool that allows you to create adn manage multiple AWS accounts. With it, you can control your accounts from a single location rather than jumping from account to account.
+    * AWS Organizations is a free governance tool that allows you to create and manage multiple AWS accounts. With it, you can control your accounts from a single location rather than jumping from account to account.
 
-	* It is best practice to create a specific account dedicated to logging. CloudTrail supports log aggregation. You can then apply Service Control Policies (SPCs) to restrict anyone from making changes to them.
+    * It is best practice to create a specific account dedicated to logging. CloudTrail supports log aggregation. You can then apply Service Control Policies (SPCs) to restrict anyone from making changes to them.
 
 1. AWS Personal Health Dashboard.
 
-	* The AWS Health Dashboard is the single place to learn about the availability and operations of AWS services. You can view the overall status of AWS services, and you can sign in to view personalized communications about your particular AWS account or organization. Your account view provides deeper visibility into resource issues, upcoming changes, and important notifications.
+    * The AWS Health Dashboard is the single place to learn about the availability and operations of AWS services. You can view the overall status of AWS services, and you can sign in to view personalized communications about your AWS account or organization. Your account view provides deeper visibility into resource issues, upcoming changes, and important notifications.
 
 1. AWS Proton.
 
-	* AWS Proton introduces service components, a new feature that allows developers complement the standard infrastructure of Proton templates with additional resources for their services. Platform engineers use Proton to define the core infrastructure of their services and keep it consistent and updated across services, and now with components developers can complement that core infrastructure with the additional resources they need to meet the needs of their particular application. Proton components enable platform engineers to expand the use cases they support without having to drastically increase the number of templates that they manage.
+    * AWS Proton introduces service components, a new feature that allows developers complement the standard infrastructure of Proton templates with additional resources for their services. Platform engineers use Proton to define the core infrastructure of their services and keep it consistent and updated across services, and now with components developers can complement that core infrastructure with the additional resources they need to meet the needs of their application. Proton components enable platform engineers to expand the use cases they support without having to drastically increase the number of templates that they manage.
+
+    * AWS Proton offers IaC provisioning and deployment of serverless/container architectures.
 
 1. AWS Service Catalog.
 
-	* AWS Service Catalog lets you centrally manage deployed IT services, applications, resources, and metadata to achieve consistent governance of your infrastructure as code (IaC) templates. With AWS Service Catalog, you can meet your compliance requirements while making sure your customers can quickly deploy the approved IT services they need.
+    * AWS Service Catalog lets you centrally manage deployed IT services, applications, resources, and metadata to achieve consistent governance of your infrastructure as code (IaC) templates. With AWS Service Catalog, you can meet your compliance requirements while making sure your customers can quickly deploy the approved IT services they need.
+
+    * AWS Service Catalog provides catalogs of preapproved services as CloudFormation templates.
 
 1. AWS Systems Manager.
 
-	* Provides a suite of tools designed to give you the ability to easily patch, update, manage, and configure your EC2 instances along with on-premise infrastructure.
+    * Provides a suite of tools designed to give you the ability to easily patch, update, manage, and configure your EC2 instances along with on-premises infrastructure.
 
 1. AWS Trusted Advisor.
 
-	* Trusted Advisor is a fully managed best-practice auditing tool. It will scan 5 different parts of your account and look for places where you could improve your adoption of the recommended best practices provided by AWS.
+    * Trusted Advisor is a fully managed best-practice auditing tool. It will scan 5 different parts of your account and look for places where you could improve your adoption of the recommended best practices provided by AWS.
 
-	* To get the most useful checks (around cost), you'll need a Business or Enterprise Support plan.
+    * To get the most useful checks (around cost), you'll need a Business or Enterprise Support plan.
 
-	* Trusted Advisor should be combined with Lambda and EventBridge to automatically resolve issues.
+    * Trusted Advisor should be combined with Lambda and EventBridge to automatically resolve issues.
 
 1. AWS Well-Architected Tool.
 
-	* The AWS Well-Architected Tool is designed to help you review the state of your applications and workloads against architectural best practices, identify opportunities for improvement, and track progress over time.
+    * The AWS Well-Architected Tool is designed to help you review the state of your applications and workloads against architectural best practices, identify opportunities for improvement, and track progress over time.
 
 #### Media Services
 
 1. Amazon Elastic Transcoder.
 
-	* Amazon Elastic Transcoder manages all aspects of the media transcoding process for you transparently and automatically.
+    * Amazon Elastic Transcoder manages all aspects of the media transcoding process for you transparently and automatically.
 
 1. Amazon Kinesis Video Streams.
 
-	* Amazon Kinesis Video Streams makes it easy to securely stream video from connected devices to AWS for analytics, machine learning (ML), playback, and other processing. Kinesis Video Streams automatically provisions and elastically scales all the infrastructure needed to ingest streaming video data from millions of devices.
+    * Amazon Kinesis Video Streams makes it easy to securely stream video from connected devices to AWS for analytics, machine learning (ML), playback, and other processing. Kinesis Video Streams automatically provisions and elastically scales all the infrastructure needed to ingest streaming video data from millions of devices.
 
 #### Networking and Content Delivery
 
@@ -1171,7 +1179,7 @@ PostgreSQL).
 
     * Use signed URLs or cookies when you want to secure content so that only the people you authorise are able to access it. A signed URL is for individual files with 1 file corresponding to 1 URL. A signed cookie is for multiple files with 1 cookie corresponding to multiple files. If your origin is EC2, then use CloudFront. If your origin is S3, then use an S3 signed URL.
 
-	* CloudFront is the only option to add HTTPS to a static website being hosted in S3.
+    * CloudFront is the only option to add HTTPS to a static website being hosted in S3.
 
 1. AWS Direct Connect.
 
@@ -1192,15 +1200,15 @@ PostgreSQL).
 
 1. AWS Global Accelerator.
 
-	* Global Accelerator is a networking service that sends your users' traffic through AWS's global network infrastructure. It can increase performance and help deal with IP caching. This solves the problem that can arise if some of your architecture fails and the IP changed behind the scenes, causing users to not be able to access the proper endpoint.
+    * Global Accelerator is a networking service that sends your users' traffic through AWS's global network infrastructure. It can increase performance and help deal with IP caching. This solves the problem that can arise if some of your architecture fails and the IP changed behind the scenes, causing users to not be able to access the proper endpoint.
 
 1. AWS PrivateLink.
 
-    * AWS PrivateLink enables peering VPCs to tens, hundreds, or thousands of customer VPCs. Does not require VPC peering, route tables, NAT Gateways, Internet Gateways, etc. Requires a Network Load Balance on the service VPC and an Elastic Network Interface (ENI) on the customer VPC.
+    * AWS PrivateLink enables peering VPCs to tens, hundreds, or thousands of customers VPCs. Does not require VPC peering, route tables, NAT Gateways, Internet Gateways, etc. Requires a Network Load Balance on the service VPC and an Elastic Network Interface (ENI) on the customer VPC.
 
 1. Amazon Route 53.
 
-    * An alias is an AWS concept, and should be chosen over CNAME.
+    * An alias is an AWS concept and should be chosen over CNAME.
 
     * Common DNS record types:
         * Start of Authority (SOA) Records. Stores the name of the server that supplied the data for the zone, the administrator, the current version of the data, and the default number of seconds for the time-to-live file on resource records.
@@ -1256,17 +1264,17 @@ PostgreSQL).
 
 1. AWS VPN.
 
-	* AWS Virtual Private Network solutions establish secure connections between your on-premises networks, remote offices, client devices, and the AWS global network. AWS VPN is comprised of two services: AWS Site-to-Site VPN and AWS Client VPN. Each service provides a highly-available, managed, and elastic cloud VPN solution to protect your network traffic.
+    * AWS Virtual Private Network solutions establish secure connections between your on-premises networks, remote offices, client devices, and the AWS global network. AWS VPN is comprised of two services: AWS Site-to-Site VPN and AWS Client VPN. Each service provides a highly available, managed, and elastic cloud VPN solution to protect your network traffic.
 
 #### Security, Identity, and Compliance
 
 1. AWS Artifact.
 
-	* AWS Artifact is your go-to, central resource for compliance-related information that matters to you. It provides on-demand access to AWS’ security and compliance reports and select online agreements. Reports available in AWS Artifact include our Service Organization Control (SOC) reports, Payment Card Industry (PCI) reports, and certifications from accreditation bodies across geographies and compliance verticals that validate the implementation and operating effectiveness of AWS security controls. Agreements available in AWS Artifact include the Business Associate Addendum (BAA) and the Nondisclosure Agreement (NDA).
+    * AWS Artifact is your go-to, central resource for compliance-related information that matters to you. It provides on-demand access to AWS’ security and compliance reports and select online agreements. Reports available in AWS Artifact include our Service Organization Control (SOC) reports, Payment Card Industry (PCI) reports, and certifications from accreditation bodies across geographies and compliance verticals that validate the implementation and operating effectiveness of AWS security controls. Agreements available in AWS Artifact include the Business Associate Addendum (BAA) and the Nondisclosure Agreement (NDA).
 
 1. AWS Audit Manager.
 
-	* Use AWS Audit Manager to map your compliance requirements to AWS usage data with prebuilt and custom frameworks and automated evidence collection.
+    * Use AWS Audit Manager to map your compliance requirements to AWS usage data with prebuilt and custom frameworks and automated evidence collection.
 
 1. AWS Certificate Manager (ACM).
 
@@ -1280,21 +1288,21 @@ PostgreSQL).
 
 1. Amazon Cognito.
 
-	* Amazon Cognito provides an identity store that scales to millions of users, supports social and enterprise identity federation, and offers advanced security features to protect your consumers and business. Built on open identity standards, Amazon Cognito supports various compliance regulations and integrates with frontend and backend development resources.
+    * Amazon Cognito provides an identity store that scales to millions of users, supports social and enterprise identity federation, and offers advanced security features to protect your consumers and business. Built on open identity standards, Amazon Cognito supports various compliance regulations and integrates with frontend and backend development resources.
 
 1. Amazon Detective.
 
-	* Amazon Detective simplifies the investigative process and helps security teams conduct faster and more effective investigations. With the Amazon Detective prebuilt data aggregations, summaries, and context, you can quickly analyze and determine the nature and extent of possible security issues.
+    * Amazon Detective simplifies the investigative process and helps security teams conduct faster and more effective investigations. With the Amazon Detective prebuilt data aggregations, summaries, and context, you can quickly analyse and determine the nature and extent of possible security issues.
 
 1. AWS Directory Service.
 
-	* Directory Service is a fully managed version of Active Directory. It allows you to offload the painful parts of keeping AD online to AWS while giving you the full control and flexibility AD provides.
+    * Directory Service is a fully managed version of Active Directory. It allows you to offload the painful parts of keeping AD online to AWS while giving you the full control and flexibility AD provides.
 
-	* Managed Microsoft AD is for when we want to migrate everything into AWS. AD Connector is used when you want to leave it on-premises.
+    * Managed Microsoft AD is for when we want to migrate everything into AWS. AD Connector is used when you want to leave it on-premises.
 
 1. AWS Firewall Manager.
 
-	* AWS Firewall Manager is a security management service that allows you to centrally configure and manage firewall rules across your accounts and applications in AWS Organizations. As new applications are created, Firewall Manager makes it easier to bring new applications and resources into compliance by enforcing a common set of security rules.
+    * AWS Firewall Manager is a security management service that allows you to centrally configure and manage firewall rules across your accounts and applications in AWS Organizations. As new applications are created, Firewall Manager makes it easier to bring new applications and resources into compliance by enforcing a common set of security rules.
 
 1. Amazon GuardDuty.
 
@@ -1310,7 +1318,7 @@ PostgreSQL).
 
     * IAM is universal. It does not apply to regions. New users have NO permissions when first created. New users are assigned an Access Key ID & Secret Access Key when first created. These are not the same as a password and you cannot use them to login to the console. You can use these to access AWS is the APIs. You only get to view them once.
 
-    * Multifactor authentication should always be setup on your root account. A password rotation policy can be also be created.
+    * Multifactor authentication should always be setup on your root account. A password rotation policy can also be created.
 
 1. Amazon Inspector.
 
@@ -1334,13 +1342,13 @@ PostgreSQL).
 
 1. AWS Network Firewall.
 
-	* AWS Network Firewall is a managed service that makes it easy to deploy essential network protections for all of your Amazon Virtual Private Clouds (VPCs). 
+    * AWS Network Firewall is a managed service that makes it easy to deploy essential network protections for all your Amazon Virtual Private Clouds (VPCs). Useful to filter network traffic before it reaches your Internet Gateway, or if you require IPS or for any hardware firewall requirements.
 
 1. AWS Resource Access Manager (AWS RAM).
 
-	* RAM is a free service that allows you to share AWS resources with other accounts and within your organisation. RAM allows you to easily share resources rather than having to create duplicate copies in your different accounts.
+    * RAM is a free service that allows you to share AWS resources with other accounts and within your organisation. RAM allows you to easily share resources rather than having to create duplicate copies in your different accounts.
 
-	* RAM should be used when sharing resources within the same region. VPC peering should be used when sharing across regions.
+    * RAM should be used when sharing resources within the same region. VPC peering should be used when sharing across regions.
 
 1. AWS Secrets Manager.
 
@@ -1348,7 +1356,7 @@ PostgreSQL).
 
 1. AWS Security Hub.
 
-	* AWS Security Hub is a cloud security posture management service that performs security best practice checks, aggregates alerts, and enables automated remediation.
+    * AWS Security Hub is a Cloud Security Posture Management (CSPM) service that performs security best practice checks, aggregates alerts, and enables automated remediation.
 
 1. AWS Shield.
 
@@ -1358,7 +1366,7 @@ PostgreSQL).
 
 1. AWS Single Sign-On.
 
-	* AWS IAM Identity Center (successor to AWS Single Sign-On) helps you securely create or connect your workforce identities and manage their access centrally across AWS accounts and applications. IAM Identity Center is the recommended approach for workforce authentication and authorization on AWS for organizations of any size and type.
+    * AWS IAM Identity Center (successor to AWS Single Sign-On) helps you securely create or connect your workforce identities and manage their access centrally across AWS accounts and applications. IAM Identity Center is the recommended approach for workforce authentication and authorization on AWS for organizations of any size and type.
 
 1. AWS WAF.
 
@@ -1379,7 +1387,7 @@ PostgreSQL).
 
 1. AWS AppSync.
 
-	* AWS AppSync creates serverless GraphQL and Pub/Sub APIs that simplify application development through a single endpoint to securely query, update, or publish data.
+    * AWS AppSync creates serverless GraphQL and Pub/Sub APIs that simplify application development through a single endpoint to securely query, update, or publish data.
 
 1. AWS Fargate.
 
@@ -1399,7 +1407,7 @@ PostgreSQL).
         * **Runtime:** You will need to pick an available runtime or bring your own. This is the environment the code will run in.
         * **Permissions:** If your Lambda function needs to make an AWS API call, you'll need to attach a role.
         * **Networking:** You can (optionally) define the VPC, subnet, and security groups your functions are a part of.
-        * **Resources:** Defining hte amount of available memory will allocate how much CPU and RAM your code gets.
+        * **Resources:** Defining the amount of available memory will allocate how much CPU and RAM your code gets.
         * **Trigger:** What is going to trigger your Lambda function to start?
 
     * Lambda excels in running small and lightweight function. Lambda can run inside or outside a VPC. You can use up to 10 GB of RAM and 15 minutes of runtime.
@@ -1579,66 +1587,122 @@ PostgreSQL).
 ### Design Secure Architectures
 
 1. You have been evaluating the NACLs in your company. Most of the NACLs are configured as per the below. If a request comes in, how will it be evaluated?
-	```JSON
-	100 All Traffic Allow
-	200 All Traffic Deny
-	All Traffic Deny *
-	```
-	* The request will be allowed. Rules with the lowest numbers are evaluated first, and matched immediately even if subsequent rules are not consistant.
+    ```JSON
+    100 All Traffic Allow
+    200 All Traffic Deny
+    All Traffic Deny *
+    ```
+    * The request will be allowed. Rules with the lowest numbers are evaluated first and matched immediately even if subsequent rules are not consistent.
 
 1. You have been given an assignment to configure Network ACLs in your VPC. Before configuring the NACLs, you need to understand how the NACLs are evaluated. How are NACL rules evaluated?
-	* NACL rules are evaluated by rule number from lowest to highest and executed immediately when a matching rule is found.
+    * NACL rules are evaluated by rule number from lowest to highest and executed immediately when a matching rule is found.
 
 1. Your company has gotten back results from an audit. One of the mandates from the audit is that your application, which is hosted on EC2, must encrypt the data before writing this data to storage. It has been directed internally that your solution must leverage an AWS managed hardware security module for the cryptographic keys. Which service could you use to meet this requirement?
-	* AWS KMS. You can configure your application to use the KMS API to encrypt all data before saving it to disk. AWS Cloud HSM is not required unless you need to create and manage the Hardware Security Modules (HSMs) that store your encryption keys.
+    * AWS KMS. You can configure your application to use the KMS API to encrypt all data before saving it to disk. AWS Cloud HSM is not required unless you need to create and manage the Hardware Security Modules (HSMs) that store your encryption keys.
 
-1. You are managing S3 buckets in your organization. This management of S3 extends to Amazon Glacier. For auditing purposes you would like to be informed if an object is restored to S3 from Glacier. What is the most efficient way you can do this?
-	* Configure S3 notifications for restore operations from Glacier. S3 has this capability natively and you don't need to use a Lambda function.
+1. You are managing S3 buckets in your organization. This management of S3 extends to Amazon Glacier. For auditing purposes, you would like to be informed if an object is restored to S3 from Glacier. What is the most efficient way you can do this?
+    * Configure S3 notifications for restore operations from Glacier. S3 has this capability natively and you don't need to use a Lambda function.
+
+1. You have been evaluating the NACLs in your company. Most of the NACLs are configured the same. How can the last rule be edited?
+    ```JSON
+    100 All Traffic Allow
+    200 All Traffic Deny
+    All Traffic Deny *
+    ```
+    * The last rule cannot be modified or removed.
+
+1. You work in healthcare for an IVF clinic. You host an application on AWS, which allows patients to track their medication during IVF cycles. The application also allows them to view test results, which contain sensitive medical data. You have a regulatory requirement that the application is secure, and you must use dedicated hardware firewalls. What AWS service would support this?
+    * AWS Firewall Manager. AWS Firewall Manager is a security management service in a single pane of glass. It is not used to deploy physical firewalls.
+
+1. You have been evaluating the NACLs in your company. Currently, you are looking at the default network ACL. What is true about the default network ACL?
+    * You can add or remove rules from the default NACL (except for the DENY rule with the asterix).
+
+1. A small company has nearly 200 users who already have AWS accounts in the company AWS environment. A new S3 bucket has been created which will allow roughly a third of all users access to sensitive information in the bucket. What is the most time efficient way to get these users access to the bucket?
+    * Create a new policy which will grant permissions to the bucket. Create a group and attach the policy to that group. Add the users to this group.
+
+1. You have a secure web application hosted on AWS using Application Load Balancers, Auto Scaling, and a fleet of EC2 instances connected to an RDS database. You need to ensure that your RDS database can only be accessed using the profile credentials specific to your EC2 instances (via an authentication token). How can you achieve this?
+    * Using IAM database authentication. IAM has database authentication capabilities that would allow an RDS database to only be accessed using the profile credentials specific to your EC2 instances. IAM roles are used to grant access to AWS services from other AWS services. You would be better using IAM database authentication.
 
 ### Design Resilient Architectures
 
 1. Due to strict compliance requirements, your company cannot leverage AWS cloud for hosting their Kubernetes clusters, nor for managing the clusters. However, they do want to try to follow the established best practices and processes that the Amazon EKS service has implemented. How can your company achieve this while running entirely on-premises?
-	* Run the clusters on-premises using Amazon EKS Distro. Amazon EKS is based on the EKS Distro, which allows you to leverage the best practices and established processes on-premises that Amazon EKS uses in AWS.
+    * Run the clusters on-premises using Amazon EKS Distro. Amazon EKS is based on the EKS Distro, which allows you to leverage the best practices and established processes on-premises that Amazon EKS uses in AWS.
 
 1. A financial tech company has decided to begin migrating their applications to the AWS cloud. Currently, they host their entire application using several self-managed Kubernetes clusters. One of their major concerns during this migration is monitoring and collecting system metrics due to the very large-scale deployments that are in place. Your Chief Technology Officer wants to avoid using AWS-proprietary technology-based monitoring services and instead leverage existing, well-known, open-source applications to help meet the monitoring requirements. Which combination of the following AWS services would best fit the company requirements while minimizing operational overhead?
-	* AWS Managed Grafana and AWS Managed Service for Prometheus are the best fits. Amazon Managed Grafana offers a fully managed service for infrastructure for data visualizations. You can leverage this service to query, correlate, and visualize operational metrics from multiple sources. Amazon Managed Service for Prometheus is a serverless, Prometheus-compatible monitoring service for container metrics. It is perfect for monitoring Kubernetes clusters at scale.
+    * AWS Managed Grafana and AWS Managed Service for Prometheus are the best fits. Amazon Managed Grafana offers a fully managed service for infrastructure for data visualizations. You can leverage this service to query, correlate, and visualize operational metrics from multiple sources. Amazon Managed Service for Prometheus is a serverless, Prometheus-compatible monitoring service for container metrics. It is perfect for monitoring Kubernetes clusters at scale.
 
 1. A financial institution has an application that produces huge amounts of actuary data, which is ultimately expected to be in the terabyte range. There is a need to run complex analytic queries against terabytes of structured data, using sophisticated query optimization, columnar storage on high-performance storage, and massively parallel query execution. Which service will best meet this requirement?
-	* Redshift is preferred.
+    * Redshift is preferred.
 
 1. An application team has decided to leverage AWS for their application infrastructure. The application performs proprietary, internal processes that other business applications utilize for their daily workloads. It is built with Apache Kafka to handle real-time streaming, which virtual machines running the application in docker containers consume the data from. The team wants to leverage services that provide less overhead but also cause the least amount of disruption to coding and deployments. Which combination of AWS services would best meet the requirements?
-	* Amazon ECS Fargate and Amazon MSK. Fargate containers offer the least disruptive changes, while also minimizing the operational overhead of managing the compute services. Amazon MSK is meant for applications that currently use or are going to use Apache Kafka for messaging. It allows for managing of control plane operations in AWS.
+    * Amazon ECS Fargate and Amazon MSK. Fargate containers offer the least disruptive changes, while also minimizing the operational overhead of managing the compute services. Amazon MSK is meant for applications that currently use or are going to use Apache Kafka for messaging. It allows for managing of control plane operations in AWS.
 
 1. Currently, you are employed as a solutions architect for a large international shipping company. The company is undergoing an IT transformation and they want to create an immutable database, where they can track packages as they are sent around the world. They will need to track what boxes they go in, what trucks they are sent in, and what aircraft or sea containers they are shipped in. The database needs to be immutable and cryptographically verifiable, and they would like to leverage the AWS cloud to achieve this. What database technology would best suit this requirement?
-	* Amazon Quantum Ledger Database (QLDB). This is an immutable and cryptographically verifiable database and would be the best solution.
+    * Amazon Quantum Ledger Database (QLDB). This is an immutable and cryptographically verifiable database and would be the best solution.
 
 1. You work for an online retailer where any downtime at all can cause a significant loss of revenue. You have architected your application to be deployed on an Auto Scaling Group of EC2 instances behind a load balancer. You have configured and deployed these resources using a CloudFormation template. The Auto Scaling Group is configured with default settings and a simple CPU utilization scaling policy. You have also set up multiple Availability Zones for high availability. The load balancer does health checks against an HTML file generated by script. When you begin performing load testing on your application and notice in CloudWatch that the load balancer is not sending traffic to one of your EC2 instances. What could be the problem?
-	* The EC2 instance has failed the load balancer health check. The load balancer will route the incoming requests only to the healthy instances. The EC2 instance may have passed status checks and be considered healthy to the Auto Scaling group, but the ELB may not use it if the ELB health check has not been met. The ELB health check has a default of 30 seconds between checks, and a default of 3 checks before making a decision.
+    * The EC2 instance has failed the load balancer health check. The load balancer will route the incoming requests only to the healthy instances. The EC2 instance may have passed status checks and be considered healthy to the Auto Scaling group, but the ELB may not use it if the ELB health check has not been met. The ELB health check has a default of 30 seconds between checks, and a default of 3 checks before deciding.
+
+1. You are working for a large financial institution and have been tasked with creating a relational database solution to deal with a read-heavy workload. The database needs to be highly available within the Oregon region and quickly recover if an Availability Zone goes offline. Which of the following would you select to meet these requirements?
+    * Create a read replica and point your read workloads to the new endpoint RDS provides. Read replicas can be promoted to become a primary database, but this is a manual procedure.'
+
+1. A small development team with very limited AWS knowledge has begun the process of creating and deploying a new frontend application based on React within AWS. The application is simple and does not need any backend processing via traditional databases. The application does, however, require GraphQL interactions to complete the required processing of data. Which AWS service can the team use to complete this?
+    * Deploy a GraphQL interface via AWS AppSync. AWS Amplify is for a full stack application.
+
+1. A large fintech company is using a web application that stores its data on Amazon RDS. As a solutions architect, you have been asked to upgrade the web application so that users around the world can access it using an API. The application will need to be able to handle large bursts of traffic in seconds from time to time. What would an ideal solution look like?
+    * Create an API using API Gateway and use Lambda to automatically handle the bursts in traffic. Note that RDS does not have Auto Scaling.
+
+1. You are a solutions architect working for a biotech company that has a large private cloud deployment using VMware. You have been tasked to setup their disaster recovery solution on AWS. What is the simplest way to achieve this?
+    * Contact your VMware representative to provision dedicated hardware within AWS in which you can deploy vCenter yourself. Note that there is no VMware landing page.
+
+1. You have a web application that is hosted on a series of EC2 instances that have an Application Load Balancer in front of them. You have created a new CloudFront distribution. You then set up its origin to point to your ALB. You need to provide access to hundreds of private files served by your CloudFront distribution. What should you use?
+    * CloudFront signed cookies. Signed cookies are useful when you want to access multiple files.
+
+1. You have a subscription website that stores images and videos in S3. You need to distribute that content globally, so you have set up a CloudFront distribution and configured your S3 bucket to only exchange data with your CloudFront distribution. Which CloudFront feature allows you to securely distribute this paid content?
+    * CloudFront Signed URLs are commonly used to distribute paid content through dynamically generated signed URLs. Origin Access Identity is used for identification purposes within CloudFront and S3, and it would not be suitable for signed URLs.
+
+1. You have been tasked with designing a strategy for backing up EBS volumes attached to an instance-store-backed EC2 instance. You have been asked for an executive summary on your design, and the executive summary should include an answer to the question, “What can an EBS volume do when snapshotting the volume is in progress”?
+    * The volume can be used normally while the snapshot is in progress.
 
 ### Design High-Performing Architectures
 
 1. A data company has implemented a subscription service for storing video files. There are two levels of subscription: personal and professional use. The personal users can upload a total of 5 GB of data, and professional users can upload as much as 5 TB of data. The application can upload files of size up to 1 TB to an S3 Bucket. What is the best way to upload files of this size?
-	* Multipart upload. The Multipart upload API enables you to upload large objects in parts. You can use this API to upload new large objects or make a copy of an existing object (see Operations on Objects). Multipart uploading is a three-step process: You initiate the upload, you upload the object parts, and after you have uploaded all the parts, you complete the multipart upload. Upon receiving the complete multipart upload request, Amazon S3 constructs the object from the uploaded parts, and you can then access the object just as you would any other object in your bucket. You can list all of your in-progress multipart uploads or get a list of the parts that you have uploaded for a specific multipart upload.
+    * Multipart upload. The Multipart upload API enables you to upload large objects in parts. You can use this API to upload new large objects or make a copy of an existing object (see Operations on Objects). Multipart uploading is a three-step process: You initiate the upload, you upload the object parts, and after you have uploaded all the parts, you complete the multipart upload. Upon receiving the complete multipart upload request, Amazon S3 constructs the object from the uploaded parts, and you can then access the object just as you would any other object in your bucket. You can list all your in-progress multipart uploads or get a list of the parts that you have uploaded for a specific multipart upload.
 
 1. An Application Load Balancer is fronting an Auto Scaling Group of EC2 instances, and the instances are backed by an RDS database. The Auto Scaling Group has been configured to use the Default Termination Policy. You are testing the Auto Scaling Group and have triggered a scale-in. Which instance will be terminated first?
-	* The instance launched from the oldest launch configuration.
+    * The instance launched from the oldest launch configuration.
 
 1. Your team has provisioned Auto Scaling groups in a single Region. The Auto Scaling groups, at max capacity, would total 40 EC2 instances between them. However, you notice that the Auto Scaling groups will only scale out to a portion of that number of instances at any one time. What could be the problem?
-	* There is a vCPU-based On-Demand Instance limit per Region.
+    * There is a vCPU-based On-Demand Instance limit per Region.
 
 1. A team of architects is designing a new AWS environment for a company which wants to migrate to the Cloud. The architects are considering the use of EC2 instances with instance store volumes. The architects realize that the data on the instance store volumes are ephemeral. Which action will not cause the data to be deleted on an instance store volume?
-	* A reboot will not cause the data to be deleted.
+    * A reboot will not cause the data to be deleted.
 
-1. Your application team stores critical data within a third-party SaaS cloud vendor. The data comes from an internal application that runs on Amazon ECS Fargate, which then stores the data within Amazon S3 in a proprietary format. Currently, AWS Lambda functions are triggered via Amazon S3 event notifications to trigger the transfer of data to an SaaS application. Due to resource and time limits, you are exploring other means of completing this workflow of transferring data from AWS to the SaaS solution. Which AWS service offers the most efficiency and has the least operational overhead?
-	* AppFlow offers a fully managed service for easily automating the bidirectional exchange of data to SaaS vendors from AWS services like Amazon S3. This helps avoid resource constraints.
+1. Your application team stores critical data within a third-party SaaS cloud vendor. The data comes from an internal application that runs on Amazon ECS Fargate, which then stores the data within Amazon S3 in a proprietary format. Currently, AWS Lambda functions are triggered via Amazon S3 event notifications to trigger the transfer of data to a SaaS application. Due to resource and time limits, you are exploring other means of completing this workflow of transferring data from AWS to the SaaS solution. Which AWS service offers the most efficiency and has the least operational overhead?
+    * AppFlow offers a fully managed service for easily automating the bidirectional exchange of data to SaaS vendors from AWS services like Amazon S3. This helps avoid resource constraints.
 
 1. You work for a large online education company that teaches IT using pre-recorded videos. They want to make their website available to the hearing impaired and need to find a way to convert their videos and audio into speech that they can then display as subtitles. Which AWS service should they use?
-	* Amazon Transcribe converts speech to text automatically. You can use this service to generate subtitles.
+    * Amazon Transcribe converts speech to text automatically. You can use this service to generate subtitles.
 
 1. You have landed your dream job at Amazon and are moving to the Alexa team. You will be tasked with product design and improvement. You meet a new colleague who does not come from a tech background, and they would like to know what services make up the Alexa service. Select the correct services.
-	* The Alexa suite incldues Polly, Transcribe, and Lex.
+    * The Alexa suite includes Polly, Transcribe, and Lex.
+
+1. You have just been hired by a large organization which uses many different AWS services in their environment. Some of the services which handle data include: RDS, Redshift, ElastiCache, DynamoDB, S3, and Glacier. You have been instructed to configure a web application using stateless web servers. Which services can you use to handle session state data?
+    * DynamoDB, RDS, or ElastiCache can handle session data. Redshift is a data warehouse and not appropriate for handling session data.
+
+1. You company has a local content management system (CMS) using Microsoft Sharepoint that is hosted on-premises. Due to a recent acquisition of another company, you expect traffic to the CMS to more than double in the coming week, so you have decided to migrate the SharePoint server to AWS. You need high performance using a Windows shared file storage. You need a high-performing cloud storage solution that is highly available and can be integrated with Active Directory. What would be the best storage option?
+    * Make an Amazon FSx for Windows File System and join this to an Active Directory Domain Controller hosted in AWS.
+
+1. You have a large number of files in S3 and you have been asked to build an index of these files. To do this, you need to read the first 250 bytes of each object in S3. This data contains some metadata about the content of the file itself. Unfortunately, there are over 10,000,000 files in your S3 bucket, and this is about 100 TB of data. The data will then need to be stored in an Aurora Database. How can you build this index in the fastest way possible?
+    * Create a program to use a byte range fetch for the first 250 Bytes of data and then store this in the Aurora Database. You cannot query based on byte size in Athena.
+
+1. What EBS Volume type gives you the highest performance in terms of IOPS?
+    * EBS Provisioned IOPS SSD (io2 Block Express) is the highest-performance SSD volume designed for business-critical latency-sensitive transactional workloads.
+
+1. You start work for a government agency that is creating a new intranet for internal employees. The department has a sprawl of information across multiple AWS accounts and services, and you need to find a way to make this information searchable. Which AWS service should you consider using?
+    * Amazon Kendra. Amazon Kendra allows you to create an intelligent search service powered by machine learning.
 
 ### Design Cost-Optimized Architectures
 
 1. You are working in a large healthcare facility which uses EBS volumes on most of the EC2 instances. The CFO has approached you about some cost savings and it has been decided that some of the EC2 instances and EBS volumes would be deleted. What step can be taken to preserve the data on the EBS volumes and keep the data available on short notice?
-	* Take point-in-time snapshots of your Amazon EBS volumes. You can back up the data on your Amazon EBS volumes to Amazon S3 by taking point-in-time snapshots. Snapshots are incremental backups, which means that only the blocks on the device that have changed after your most recent snapshot are saved.
+    * Take point-in-time snapshots of your Amazon EBS volumes. You can back up the data on your Amazon EBS volumes to Amazon S3 by taking point-in-time snapshots. Snapshots are incremental backups, which means that only the blocks on the device that have changed after your most recent snapshot are saved.
